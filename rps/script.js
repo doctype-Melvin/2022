@@ -10,7 +10,7 @@ let pScore = 0;
 let cScore = 0;
 
 /*Simple player input prompt*/
-function playerPlay(){
+/*function playerPlay(){
     let input = prompt('Make a choice');
     switch(input) {
         case '1':
@@ -23,10 +23,12 @@ function playerPlay(){
             return choice[Math.floor(Math.random()*choice.length)]
     }
 }
+*/
+
 
 /*Play one round*/
 function playRound(ply, cpu) {
-    ply = playerPlay()
+    ply ;
     cpu = cpuPlay();
     if ((ply === 'rock' && cpu === 'scissors') ||
         (ply === 'paper' && cpu === 'rock') ||
@@ -40,21 +42,48 @@ function playRound(ply, cpu) {
             return `You lost! ${cpu} beats ${ply}`
         }
 }
+console.log(playRound())
 
 /*Function to play a game of 5 rounds*/
-/*function game(){
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound());
-        roundCount++;
-    }
-    console.log(pScore);
-    console.log(cScore)
-    if (pScore > cScore) {
-        return `You won this match!`
-    } else if (pScore === cScore) {
-        return `It's a tie game!`
-    } else {
-        return `Computer won this match!`
-    }
-}*/
-//console.log(game())
+// function game(){
+//     for (let i = 0; i < 5; i++) {
+//         console.log(playRound);
+//         roundCount++;
+//     }
+//     console.log(pScore);
+//     console.log(cScore)
+//     if (pScore > cScore) {
+//         return `You won this match!`
+//     } else if (pScore === cScore) {
+//         return `It's a tie game!`
+//     } else {
+//         return `Computer won this match!`
+//     }
+// }
+
+
+//Player control buttons
+const playerUI = document.querySelector('#player-control');
+
+const rock = document.createElement('button');
+rock.classList.add('rock');
+rock.textContent = 'Rock';
+playerUI.appendChild(rock);
+
+    const paper = document.createElement('button');
+    paper.classList.add('paper');
+    paper.textContent = 'Paper';
+    playerUI.appendChild(paper);
+
+        const scissors = document.createElement('button');
+        scissors.classList.add('scissors');
+        scissors.textContent = 'Scissors';
+        playerUI.appendChild(scissors);
+
+            const random = document.createElement('button');
+            random.classList.add('random');
+            random.textContent = 'Random Attack';
+            playerUI.appendChild(random);
+
+
+
