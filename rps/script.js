@@ -42,7 +42,7 @@ function playRound(ply, cpu) {
 }
 
 /*Function to play a game of 5 rounds*/
-function game(){
+/*function game(){
     for (let i = 0; i < 5; i++) {
         console.log(playRound());
         roundCount++;
@@ -56,5 +56,5 @@ function game(){
     } else {
         return `Computer won this match!`
     }
-}
-console.log(game())
+}*/
+//console.log(game())
