@@ -9,40 +9,24 @@ let roundCount = 0;
 let pScore = 0;
 let cScore = 0;
 
-/*Simple player input prompt*/
-/*function playerPlay(){
-    let input = prompt('Make a choice');
-    switch(input) {
-        case '1':
-            return choice[0]
-        case '2':
-            return choice[1]
-        case '3':
-            return choice[2]
-        default:
-            return choice[Math.floor(Math.random()*choice.length)]
-    }
-}
-*/
-
-
 /*Play one round*/
 function playRound(ply, cpu) {
-    ply ;
     cpu = cpuPlay();
     if ((ply === 'rock' && cpu === 'scissors') ||
         (ply === 'paper' && cpu === 'rock') ||
         (ply === 'scissors' && cpu === 'paper')) {
             pScore++
+                console.log(`You won! ${ply} beats ${cpu}`)
             return `You won! ${ply} beats ${cpu}`
         } else if (ply === cpu) {
+                console.log(`It's a draw!`)
             return `It's a draw!`
         } else {
             cScore++
+                console.log(`You lost! ${cpu} beats ${ply}`)
             return `You lost! ${cpu} beats ${ply}`
         }
 }
-console.log(playRound())
 
 /*Function to play a game of 5 rounds*/
 // function game(){
@@ -63,27 +47,77 @@ console.log(playRound())
 
 
 //Player control buttons
-const playerUI = document.querySelector('#player-control');
+const palyerUI = document.querySelector('#player-control');
 
 const rock = document.createElement('button');
 rock.classList.add('rock');
 rock.textContent = 'Rock';
-playerUI.appendChild(rock);
+palyerUI.appendChild(rock);
 
     const paper = document.createElement('button');
     paper.classList.add('paper');
     paper.textContent = 'Paper';
-    playerUI.appendChild(paper);
+    palyerUI.appendChild(paper);
 
         const scissors = document.createElement('button');
         scissors.classList.add('scissors');
         scissors.textContent = 'Scissors';
-        playerUI.appendChild(scissors);
+        palyerUI.appendChild(scissors);
 
             const random = document.createElement('button');
             random.classList.add('random');
             random.textContent = 'Random Attack';
-            playerUI.appendChild(random);
+            palyerUI.appendChild(random);
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => button.addEventListener('click', playerInput))
+
+function playerInput(e) {
+    switch(e.target.className) {
+        case 'rock':
+            playRound(e.target.className);
+            break;
+        case 'paper':
+            playRound(e.target.className);
+            break;
+        case 'scissors':
+            playRound(e.target.className);
+            break;
+        case 'random':
+            playRound(cpuPlay());
+    }
+}
 
 
+//CPU Panel Dummy Controls
+
+const cpuUI = document.querySelector('#cpu-control');
+
+const rockCpu = document.createElement('button');
+rockCpu.classList.add('rock');
+rockCpu.textContent = 'Rock';
+cpuUI.appendChild(rockCpu);
+
+    const paperCpu = document.createElement('button');
+    paperCpu.classList.add('paper');
+    paperCpu.textContent = 'Paper';
+    cpuUI.appendChild(paperCpu);
+
+        const scissorsCpu = document.createElement('button');
+        scissorsCpu.classList.add('scissors');
+        scissorsCpu.textContent = 'Scissors';
+        cpuUI.appendChild(scissorsCpu);
+
+//Scores & Messages Panel
+
+const scoresPanel = document.querySelector('#score');
+const scoresDisplay = document.createElement('div');
+    scoresDisplay.classList.add('scoreBoard');
+    scoresDisplay.setAttribute('style', 'border: 2px black solid; font-size: 55px');
+        scoresPanel.appendChild(scoresDisplay);
+
+const playerScore = `${pScore}`
+const dashScore = `-`
+const cpuScore = `${cScore}`
+scoresDisplay.append(playerScore, dashScore, cpuScore)
 

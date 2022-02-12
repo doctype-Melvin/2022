@@ -8,6 +8,27 @@ html {
     font-family: Permanent Marker, Chakra Petch;
 }
 
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: red 2px solid;
+}
+
+#ui-panel {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    border: red 2px solid;
+}
+
 #header.h1 {
     font-family: Permanent Marker;
 }
@@ -15,4 +36,9 @@ html {
 #ui-panel,
 #header p {
     font-family: Chakra Petch;
+}
+
+#player,
+#cpu {
+    flex: 2;
 }
