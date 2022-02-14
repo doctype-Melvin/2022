@@ -5,47 +5,6 @@ function cpuPlay() {
     return choice[Math.floor(Math.random()*choice.length)]
 };
 
-let roundCount = 0;
-let pScore = 0;
-let cScore = 0;
-
-/*Play one round*/
-function playRound(ply, cpu) {
-    cpu = cpuPlay();
-    if ((ply === 'rock' && cpu === 'scissors') ||
-        (ply === 'paper' && cpu === 'rock') ||
-        (ply === 'scissors' && cpu === 'paper')) {
-            pScore++
-                console.log(`You won! ${ply} beats ${cpu}`)
-            return `You won! ${ply} beats ${cpu}`
-        } else if (ply === cpu) {
-                console.log(`It's a draw!`)
-            return `It's a draw!`
-        } else {
-            cScore++
-                console.log(`You lost! ${cpu} beats ${ply}`)
-            return `You lost! ${cpu} beats ${ply}`
-        }
-}
-
-/*Function to play a game of 5 rounds*/
-// function game(){
-//     for (let i = 0; i < 5; i++) {
-//         console.log(playRound);
-//         roundCount++;
-//     }
-//     console.log(pScore);
-//     console.log(cScore)
-//     if (pScore > cScore) {
-//         return `You won this match!`
-//     } else if (pScore === cScore) {
-//         return `It's a tie game!`
-//     } else {
-//         return `Computer won this match!`
-//     }
-// }
-
-
 //Player control buttons
 const palyerUI = document.querySelector('#player-control');
 
@@ -75,17 +34,102 @@ buttons.forEach((button) => button.addEventListener('click', playerInput))
 function playerInput(e) {
     switch(e.target.className) {
         case 'rock':
-            playRound(e.target.className);
+            game(e.target.className);
             break;
         case 'paper':
-            playRound(e.target.className);
+            game(e.target.className);
             break;
         case 'scissors':
-            playRound(e.target.className);
+            game(e.target.className);
             break;
         case 'random':
-            playRound(cpuPlay());
+            game(cpuPlay());
     }
+}
+
+//Scores & Messages Panel
+const scoresPanel = document.querySelector('#score');
+const scoresDisplay = document.createElement('div');
+    scoresDisplay.classList.add('scoreBoard');
+    scoresDisplay.setAttribute('style', 'border: 2px black solid; font-size: 55px');
+        
+        const messageDisplay = document.createElement('div');
+        messageDisplay.classList.add('message');
+        messageDisplay.setAttribute('style', 'border: 2px blue solid')
+            scoresPanel.append(scoresDisplay, messageDisplay);
+
+
+
+const dashScore = `-`
+let pScore = 0;
+let cScore = 0;
+scoresDisplay.append(pScore, dashScore, cScore)
+
+let rounds = 0
+
+/*Play one round*/
+function playRound(ply, cpu) {
+
+    if ((ply === 'rock' && cpu === 'scissors') ||
+        (ply === 'paper' && cpu === 'rock') ||
+        (ply === 'scissors' && cpu === 'paper')) {
+            pScore++;
+            rounds++;
+            scoresDisplay.textContent = `${pScore}-${cScore}`;
+            messageDisplay.textContent = `You won! ${ply} beats ${cpu}`;
+            return
+        } else if (ply === cpu) {
+            rounds++;
+            scoresDisplay.textContent = `${pScore}-${cScore}`;
+            messageDisplay.textContent = `It's a draw!`;
+            return 
+        } else {
+            cScore++;
+            rounds++;
+            scoresDisplay.textContent = `${pScore}-${cScore}`;
+            messageDisplay.textContent = `You lost! ${cpu} beats ${ply}`;
+            return 
+        }
+}
+
+//Function to play a game of 5 rounds
+function game(input) {
+    let player = input;
+    let computer = cpuPlay();
+    playRound(player, computer);
+    if (rounds === 5 && pScore > cScore) {
+        messageDisplay.textContent = `Human Power!`;
+        endGame();
+    }else if (rounds === 5 && pScore < cScore) {
+        messageDisplay.textContent = `Mr Roboto succeeds!`;
+        endGame();
+    } else if (rounds === 5 && pScore === cScore) {
+        messageDisplay.textContent = `Everybody loses`;
+        endGame();
+    }
+}
+
+//End Game Function
+function endGame() {
+    rock.setAttribute('disabled', 1);
+    paper.setAttribute('disabled', 1);
+    scissors.setAttribute('disabled', 1);
+    random.setAttribute('disabled', 1);
+        let reset = document.createElement('button');
+        reset.textContent = `Reset`
+        scoresPanel.appendChild(reset);
+        reset.addEventListener('click', () => {
+            pScore = 0;
+            cScore = 0;
+            rounds = 0;
+            scoresDisplay.textContent = `${pScore}-${cScore}`;
+            messageDisplay.textContent = '';
+                rock.removeAttribute('disabled', 1);
+                paper.removeAttribute('disabled', 1);
+                scissors.removeAttribute('disabled', 1);
+                random.removeAttribute('disabled', 1);
+                    scoresPanel.removeChild(reset)
+        })
 }
 
 
@@ -108,16 +152,5 @@ cpuUI.appendChild(rockCpu);
         scissorsCpu.textContent = 'Scissors';
         cpuUI.appendChild(scissorsCpu);
 
-//Scores & Messages Panel
 
-const scoresPanel = document.querySelector('#score');
-const scoresDisplay = document.createElement('div');
-    scoresDisplay.classList.add('scoreBoard');
-    scoresDisplay.setAttribute('style', 'border: 2px black solid; font-size: 55px');
-        scoresPanel.appendChild(scoresDisplay);
-
-const playerScore = `${pScore}`
-const dashScore = `-`
-const cpuScore = `${cScore}`
-scoresDisplay.append(playerScore, dashScore, cpuScore)
 
