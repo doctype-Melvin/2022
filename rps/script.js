@@ -1,6 +1,6 @@
-const selection = document.querySelectorAll('[data-selection]');
-const final = document.querySelector('[data-final]')
-const SELECTIONS = [
+const display = document.querySelector('#messages');
+
+const choices = [
     {
         name: 'rock',
         icon: '✊',
@@ -18,38 +18,34 @@ const SELECTIONS = [
     }
 ]
 
-selection.forEach(button => {
-    button.addEventListener('click', e => {
-        const hand = button.dataset.selection;
-        const choice = SELECTIONS.find(selection => selection.name === hand)
-        makeChoice(choice)
+function randomChoice(){
+    const random = Math.floor(Math.random()*choices.length);
+    return choices[random]
+}
+
+const selections = document.querySelectorAll('[data-selection]');
+selections.forEach(button => {
+    button.addEventListener('click', () => {
+        const player = button.dataset.selection;
+        const selection = choices.find(choice => choice.name === player)
+        playRound(selection)
     })
-})
+});
 
+function playRound(player, cpu) {
+    cpu = randomChoice();
+    const playerWin = whoWins(player, cpu);
+    const cpuWin = whoWins(cpu, player)
 
-function makeChoice(hand) {
-    const cpu = randomChoice();
-    const youWin = declareWinner(hand, cpu);
-    const cpuWin = declareWinner(cpu, hand);
+    showResult(cpu, cpuWin);
+    showResult(player, playerWin);
     
-    displayHands(cpu, cpuWin);
-    displayHands(hand, youWin);
 }
 
-function displayHands(hand, winner) {
-    const div = document.createElement('div');
-    div.setAttribute('style', 'border: solid 2px black')
-    div.innerText = hand.icon;
-    div.classList.add('result-selection');
-    if (winner) div.classList.add('winner')
-    final.after(div)
+function showResult(selection, winner) {
+    console.log(selection.icon)
 }
 
-function randomChoice() {
-    const random = Math.floor(Math.random() * SELECTIONS.length);
-    return SELECTIONS[random];
-}
-
-function declareWinner(choice, cpu) {
-    return choice.beats === cpu.name
+function whoWins(selection, opponent) {
+    return selection.beats === opponent.name
 }
