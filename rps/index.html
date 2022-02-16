@@ -9,22 +9,23 @@
 </head>
 <body>
     <div id="wrapper">
-    <div id="header">
-        <h1>Rock Paper Scissors</h1>
-        <p id="welcome">Welcome to the battlegrounds!</p>
-        <p>It is on!</p>
-    </div>
-    <div id="ui-panel">
-        <div id="player">Player UI
-            <div id="player-control"></div>
+        <div id="selections">
+            <button id="selection" data-selection="rock">✊</button>
+            <button id="selection" data-selection="paper">✋</button>
+            <button id="selection" data-selection="scissors">🖖</button>
         </div>
-        <div id="score">Score & Messages</div>
-        <div id="cpu">CPU
-            <div id="cpu-control"></div>
-        </div>
+
+        <div id="results">
+            <div>Player
+                <span class="score">0</span>
+            </div>
             
+            <div>Mr Roboto
+                <span class="score">0</span>
+            </div>
+        </div>
+        <div data-final></div>
     </div>
-</div>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
