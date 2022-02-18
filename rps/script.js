@@ -1,5 +1,3 @@
-const display = document.querySelector('#messages');
-
 const choices = [
     {
         name: 'rock',
@@ -18,11 +16,12 @@ const choices = [
     }
 ]
 
+//Random computer choice
 function randomChoice(){
     const random = Math.floor(Math.random()*choices.length);
     return choices[random]
 }
-
+//Player choice - Button starts round
 const selections = document.querySelectorAll('[data-selection]');
 selections.forEach(button => {
     button.addEventListener('click', () => {
@@ -32,20 +31,24 @@ selections.forEach(button => {
     })
 });
 
+
 function playRound(player, cpu) {
     cpu = randomChoice();
-    const playerWin = whoWins(player, cpu);
-    const cpuWin = whoWins(cpu, player)
-
-    showResult(cpu, cpuWin);
-    showResult(player, playerWin);
-    
+    showHand(player, cpu);
+    console.log(player.icon, cpu.icon)
 }
 
-function showResult(selection, winner) {
-    console.log(selection.icon)
-}
+//Show played hand
+const outcome = document.querySelector('#messages');
+const playerHand = document.createElement('div');
+playerHand.classList.add('player-hand');
+const cpuHand = document.createElement('div');
+cpuHand.classList.add('cpu-hand');
 
-function whoWins(selection, opponent) {
-    return selection.beats === opponent.name
+function showHand(ply, cpu) {
+    let player = ply.icon;
+    let computer = cpu.icon;
+        playerHand.textContent = player;
+        cpuHand.textContent = computer;
+        outcome.append(playerHand, cpuHand)
 }
