@@ -36,7 +36,7 @@ html, body {
     border: 2px red solid;
 }
 
-#player {
+#player, #cpu {
     font-size: 20px;
 }
 
@@ -46,6 +46,10 @@ html, body {
 
 #messages {
     display: flex;
-    justify-content: space-around;
     font-size: 5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.round-winner {
+    font-size: 2rem;
 }
