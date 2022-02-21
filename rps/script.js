@@ -1,4 +1,4 @@
-const choices = [
+const RPS = [
     {
         name: 'rock',
         icon: '✊',
@@ -18,46 +18,70 @@ const choices = [
 
 //Random computer choice
 function randomChoice(){
-    const random = Math.floor(Math.random()*choices.length);
-    return choices[random]
+    return RPS[Math.floor(Math.random()*choices.length)]
 }
 //Player choice - Button starts round
-const selections = document.querySelectorAll('[data-selection]');
-selections.forEach(button => {
-    button.addEventListener('click', () => {
-        const player = button.dataset.selection;
-        const selection = choices.find(choice => choice.name === player)
-        playRound(selection)
-    })
-});
+const choices = document.querySelectorAll('[data-selection]');
+    choices.forEach(button => button.addEventListener('click', () => {
+        const choiceName = button.dataset.selection;
+        const choice = RPS.find(choice => choice.name === choiceName);
+            playRound(choice);
+}));
 
-
-function playRound(player, cpu) {
-    cpu = randomChoice();
-    showHand(player, cpu);
-    alertWin(player, cpu)
-    console.log(player.icon, cpu.icon)
+//Main play round function
+function playRound(choice){
+    const roboto = randomChoice();
+    const playerWins = whoWins(choice, roboto);
+    const robotoWins = whoWins(roboto, choice);
+    showHands(choice, roboto);
+    
 }
 
-//Show played hand and round outcome message
+//Determin winner function
+function whoWins(choice, robotoChoice) {
+    return choice.beats === robotoChoice.name
+}
+
+//Show hands
 const outcome = document.querySelector('#messages');
-const playerHand = document.createElement('div');
-playerHand.classList.add('player-hand');
 const message = document.createElement('div');
 message.classList.add('round-winner');
-const cpuHand = document.createElement('div');
-cpuHand.classList.add('cpu-hand');
+const pHand = document.createElement('div');
+const cHand = document.createElement('div');
 
-function showHand(ply, cpu) {
-    let player = ply.icon;
-    let computer = cpu.icon;
-        playerHand.textContent = player;
-        cpuHand.textContent = computer;
-        outcome.append(playerHand, message, cpuHand)
+function showHands(player, computer){
+    let ply = player.icon;
+        pHand.textContent = ply;
+    let cpu = computer.icon;
+        cHand.textContent = cpu;
+        message.textContent = '';
+            outcome.append(pHand, message, cHand)
 }
 
-function alertWin(ply, cpu) {
-    return (ply.beats===cpu.name) ? message.textContent = `${ply.name} beats ${cpu.name}` :
-    (cpu.beats===ply.name) ? message.textContent = `${ply.name} beaten by ${cpu.name}` :
-    message.textContent = `It's a draw!`
+
+
+
+/*
+const display = document.querySelector('#messages');
+const info = document.createElement('div');
+info.classList.add('round-winner');
+const pHand = document.createElement('div');
+const cHand = document.createElement('div');
+
+function showHands(winner){
+    const winning = winner.name;
+        pHand.textContent = winner.icon;
+    const losing = winner.beats;
+    const loser = RPS.find(loser => loser.name === losing);
+        cHand.textContent = loser.icon
+    info.textContent = `${winning} beats ${losing}`
+    display.append(pHand, info, cHand)
 }
+*/
+
+/*Things to add
+Transition from clicking choice to two fists engaging (round initiation)
+Fade from round initiation to outcome
+Keep track of outcome history
+Choosing game length (3 rounds, 5 rounds, 11 rounds)
+Optional: character choice*/
