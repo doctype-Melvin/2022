@@ -40,7 +40,8 @@ function playRound(choice) {
             }else if(robotoWins) {
             trackScore(cpu),
             computer();
-                }else draw();
+                }else 
+                draw();
     showHands(choice, roboto);
 }
 
@@ -70,7 +71,7 @@ function showHands(player, cpu) {
     let cIcon = cpu.icon
         cHand.innerText = cIcon ;
         board.append(pHand, current, cHand);
-    trackHistory(pIcon, cIcon);
+    trackHistory(pIcon, cIcon)
 }
 //Helper functions for message board
 function ply() {
@@ -87,19 +88,19 @@ function draw() {
 const history = document.querySelector('#history');
 
 function trackHistory(player, cpu) {
-const pHistory = document.createElement('div');
-const cHistory = document.createElement('div');
-const roundResult = document.createElement('div');
-        roundResult.setAttribute('id', 'result');
-const text = document.createElement('div');
-        text.setAttribute('id', 'result-text');
-    
-    pHistory.innerText = player;
-    text.innerText = 'Round'
-    cHistory.innerText = cpu;
+    const pHistory = document.createElement('div');
+    const cHistory = document.createElement('div');
+    const roundResult = document.createElement('div');
+            roundResult.setAttribute('id', 'result');
+    const text = document.createElement('div');
+            text.setAttribute('id', 'result-text');
         
-    roundResult.append(pHistory, text, cHistory)
-        history.append(roundResult)
+        pHistory.innerText = player;
+        text.innerText = 'Round'
+        cHistory.innerText = cpu;
+            
+        roundResult.append(pHistory, text, cHistory)
+            history.append(roundResult)
 }
 // Change game mode (winner of x rounds or x points win)
 // Try adding animation for round initiation
