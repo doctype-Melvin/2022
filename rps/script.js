@@ -60,15 +60,17 @@ function trackScore(score) {
 //Round messages
 const board = document.querySelector('#messages');
 const current = document.createElement('div');
-current.classList.add('round-winner')
+        current.classList.add('round-winner')
 const pHand = document.createElement('div');
 const cHand = document.createElement('div');
 
 function showHands(player, cpu) {
-    pHand.innerText = player.icon;
-    cHand.innerText = cpu.icon;
-    //current.innerText = ''
-    board.append(pHand, current, cHand)
+    let pIcon = player.icon
+        pHand.innerText = pIcon;
+    let cIcon = cpu.icon
+        cHand.innerText = cIcon ;
+        board.append(pHand, current, cHand);
+    trackHistory(pIcon, cIcon);
 }
 //Helper functions for message board
 function ply() {
@@ -80,3 +82,24 @@ function computer() {
 function draw() {
     current.innerText = 'Draw'
 }
+
+// Add round history
+const history = document.querySelector('#history');
+
+function trackHistory(player, cpu) {
+const pHistory = document.createElement('div');
+const cHistory = document.createElement('div');
+const roundResult = document.createElement('div');
+        roundResult.setAttribute('id', 'result');
+const text = document.createElement('div');
+        text.setAttribute('id', 'result-text');
+    
+    pHistory.innerText = player;
+    text.innerText = 'Round'
+    cHistory.innerText = cpu;
+        
+    roundResult.append(pHistory, text, cHistory)
+        history.append(roundResult)
+}
+// Change game mode (winner of x rounds or x points win)
+// Try adding animation for round initiation

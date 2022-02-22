@@ -63,3 +63,19 @@ html, body {
 .round-winner {
     font-size: 1.75rem;
 }
+
+#result {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 3.5rem;
+}
+
+#result-text {
+    font-size: 1.5rem;
+}
+
+.loser {
+    font-size: 3rem;
+    opacity: 0.6;
+}
