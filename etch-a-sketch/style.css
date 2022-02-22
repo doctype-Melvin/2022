@@ -1,0 +1,19 @@
+.wrapper {
+    border: 2px solid black;
+}
+
+.content {
+    border: 2px solid red;
+    display: flex;
+    
+}
+.grid-container {
+    display: grid;
+    border: 2px solid green;
+    width: 700px;
+    height: 700px;
+}
+.menu {
+    border: 2px solid yellow;
+    flex: 1
+}
