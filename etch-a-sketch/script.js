@@ -21,7 +21,8 @@ eraser.textContent = 'Clear';
 menu.append(eraser);
 eraser.addEventListener('click', () => {
     const squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.style = 'background: white')
+    squares.forEach(square => square.style = 'background: white');
+    drawSquares()
 })
 
     //Rainbow mode
@@ -45,7 +46,8 @@ eraser.addEventListener('click', () => {
         greyscale.addEventListener('click', () => {
             const squares = document.querySelectorAll('.square');
             squares.forEach(square => square.addEventListener('mouseover', () => {
-                square.style.background = `rgba(0, 0, 0, 0.1)`
+                let alpha = 0.1
+                square.style.background = `rgba(0, 0, 0, ${alpha})`;             
             }))
         })
 
