@@ -38,6 +38,12 @@ eraser.addEventListener('click', () => {
         }))
     })
 
+        //Greyscale mode
+        const greyscale = document.createElement('button');
+        greyscale.textContent = 'Greyscale';
+        menu.append(greyscale);
+        
+
 //Function manipulates square style
 const palette = document.createElement('input');
 palette.setAttribute('type', 'color');
