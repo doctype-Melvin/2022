@@ -42,7 +42,12 @@ eraser.addEventListener('click', () => {
         const greyscale = document.createElement('button');
         greyscale.textContent = 'Greyscale';
         menu.append(greyscale);
-        
+        greyscale.addEventListener('click', () => {
+            const squares = document.querySelectorAll('.square');
+            squares.forEach(square => square.addEventListener('mouseover', () => {
+                square.style.background = `rgba(0, 0, 0, 0.1)`
+            }))
+        })
 
 //Function manipulates square style
 const palette = document.createElement('input');
