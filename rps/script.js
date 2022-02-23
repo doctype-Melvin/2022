@@ -21,13 +21,16 @@ function computerChoice(){
     return RPS[Math.floor(Math.random()*RPS.length)]
 }
 
-//Player choice function
+//Player choice function -- Start game
 const choices = document.querySelectorAll('[data-selection]');
-choices.forEach(button => button.addEventListener('click', () => {
+function startGame(){
+    choices.forEach(button => button.addEventListener('click', () => {
     let choiceName = button.dataset.selection;
     let choice = RPS.find(choice => choice.name === choiceName);
     playRound(choice);
 }));
+};
+startGame()
 
 //Play round function
 function playRound(choice) {
@@ -56,6 +59,7 @@ const cpu = document.querySelector('[data-cpu-score]');
 
 function trackScore(score) {
     score.innerText = parseInt(score.innerText)+1
+    return score.innerText
 }
 
 //Round messages
@@ -96,11 +100,25 @@ function trackHistory(player, cpu) {
             text.setAttribute('id', 'result-text');
         
         pHistory.innerText = player;
-        text.innerText = 'Round'
         cHistory.innerText = cpu;
+        text.innerText = 'Round'
             
         roundResult.append(pHistory, text, cHistory)
             history.append(roundResult)
 }
 // Change game mode (winner of x rounds or x points win)
+const hands = document.querySelector('#choices')
+const gameMode = document.createElement('div');
+
+const fiveRounds = document.createElement('button');
+fiveRounds.textContent = 'Best of 5';
+    const sevenRounds = document.createElement('button');
+    sevenRounds.textContent = 'Best of 7';
+        const elevenRounds = document.createElement('button');
+        elevenRounds.textContent = 'Best of 11';
+
+        gameMode.append(fiveRounds, sevenRounds, elevenRounds)
+middle.insertBefore(gameMode, hands)
+
+
 // Try adding animation for round initiation
