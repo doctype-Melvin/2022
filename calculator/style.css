@@ -1,0 +1,29 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *::before, *:after {
+    box-sizing: inherit;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.calc-body {
+    background: #bad455;
+    padding: 15px;
+}
+
+.display {
+    background: #c8da83;
+    font-size: 2rem;
+}
+
