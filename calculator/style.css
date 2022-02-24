@@ -14,16 +14,24 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 5%;
+    height: 500px;
 }
 
 .calc-body {
     background: #bad455;
     padding: 15px;
+    border: solid 3px #66703d;
+    border-radius: 5px;
+    width: 500px;
+    height: 250px;
 }
 
 .display {
-    background: #c8da83;
+    background: #d7e4a6;
     font-size: 2rem;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 

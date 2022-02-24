@@ -30,6 +30,7 @@ const OPERATORS = [
         calc: function(num1, num2) {
             return num1/num2
         }
+        //Add backspace, clear, equals 
     }
 ]
 
@@ -39,9 +40,35 @@ function operate(operator, num1, num2) {
     return operation.calc(num1, num2)
 }
 
-function test(){
-    window.addEventListener('keydown', (e) => {
-        console.log(e)
-    })
+//Show numbers in display
+const display = document.querySelector('.display');
+const numBlock = document.querySelectorAll('.num');
+
+function displayNum(e) {
+     let number = parseInt(e.target.textContent);
+     display.append(number)
+};
+numBlock.forEach(button => button.addEventListener('click', displayNum))
+
+//Show operators in display
+const operators = document.querySelectorAll('.operator');
+
+function displayOperator(e){
+    display.append(e.target.textContent)
 }
-test()
+operators.forEach(button => button.addEventListener('click', displayOperator))
+
+//Keydown to trigger displayNum
+// window.addEventListener('keydown', (e) => {
+//     console.log(e)
+// })
+
+
+
+// Looking for keyCode? Use this function
+// function test(){
+//     window.addEventListener('keydown', (e) => {
+//         console.log(e)
+//     })
+// }
+// test()
