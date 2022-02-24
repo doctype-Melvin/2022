@@ -33,24 +33,15 @@ const OPERATORS = [
     }
 ]
 
+//Function looks up the corresponding operator array object
 function operate(operator, num1, num2) {
     let operation = OPERATORS.find(element => operator === element.operator)
     return operation.calc(num1, num2)
 }
 
-// function add(num1, num2) {
-//     let result = num1 += num2;
-//     return result
-// }
-
-// function subtract(num1, num2) {
-//     return num1-num2
-// }
-
-// function multiply(num1, num2) {
-//     return num1*num2
-// }
-
-// function divide(num1, num2) {
-//     return num1/num2
-// }
+function test(){
+    window.addEventListener('keydown', (e) => {
+        console.log(e)
+    })
+}
+test()
