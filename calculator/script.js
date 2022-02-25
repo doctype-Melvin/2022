@@ -42,41 +42,34 @@ function operate(operator, num1, num2) {
 
 //Storage for input
 let storage = []
-console.log(storage)
 
 //Show numbers in display
 const display = document.querySelector('.display');
 const numBlock = document.querySelectorAll('.num');
 
 function displayNum(e) {
-     let number = parseInt(e.target.textContent);
-     display.append(number)
-     storage.push(number)
-     console.log(storage)
-        //Push all digits as a single number into array until operator is clicked
-        //Or use operator as split point in array
+    let number = parseInt(e.target.textContent);
+    display.append(number)
+    storage.push(number)
+    console.log(storage)
 };
 numBlock.forEach(button => button.addEventListener('click', displayNum))
 
-//Show operators in display
+//Convert array elements to number
 const operators = document.querySelectorAll('.operator');
+//let op = e.target.textContent;
 
-function displayOperator(e){
-    let op = e.target.textContent;
-    display.append(e.target.textContent);
-    storage.push(op)
-    console.log(storage)
-}       //When operator is clicked, push op to array and make way for next number
-operators.forEach(button => button.addEventListener('click', displayOperator))
+function processStorage(){
+    let number = parseInt(storage.join(''));
+    storage = [];
+    return number
+}       
+operators.forEach(button => button.addEventListener('click', processStorage));
 
-function storeInput(input) {
-    let storage = [];
-   
-    console.log(storage)
+function clearDisplay(input) { 
+    display.remove(input)
 }
-//The storage array now adds each input as a single value
-//The operators could act as a split point to join digits to values
-//[1, 4, 2, '-', 2, 3] >>> [142, '-', 23]
+
 
 
 
