@@ -45,6 +45,11 @@ const subtract = document.querySelector('.subtract');
 const multiply = document.querySelector('.multiply');
 const divide = document.querySelector('.divide');
 
+//Selectors for other buttons
+const backspace = document.querySelector('.backspace');
+const clear = document.querySelector('.clear');
+const equals = document.querySelector('.equals');
+
 //Selector for numblock
 const num = document.querySelectorAll('.num');
 
@@ -52,7 +57,8 @@ const num = document.querySelectorAll('.num');
 const display = document.querySelector('.display');
 
 //Other variables
-const operator = '';
-const num1 = null;
-const num2 = null;
-const displayValue = 0;
+let operator = '';
+let num1 = null;
+let num2 = null;
+let displayValue = 0;
+let storage = [];
