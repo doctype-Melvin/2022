@@ -66,11 +66,14 @@ function processStorage(){
 }       
 operators.forEach(button => button.addEventListener('click', processStorage));
 
-function clearDisplay(input) { 
-    display.remove(input)
+function clearDisplay() { 
+    display.textContent = '';
+    storage = []
 }
+clearDisplay()
 
-
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', clearDisplay)
 
 
 
