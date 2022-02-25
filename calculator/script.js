@@ -39,56 +39,20 @@ function operate(operator, num1, num2) {
     return operation.calc(num1, num2)
 }
 
-//Storage for input
-let storage = []
+//Selectors for operator buttons
+const add = document.querySelector('.add');
+const subtract = document.querySelector('.subtract');
+const multiply = document.querySelector('.multiply');
+const divide = document.querySelector('.divide');
 
-//Show numbers in display
+//Selector for numblock
+const num = document.querySelectorAll('.num');
+
+//Selector for display
 const display = document.querySelector('.display');
-const numBlock = document.querySelectorAll('.num');
 
-function displayNum(e) {
-    let number = parseInt(e.target.textContent);
-    display.append(number)
-    storage.push(number)
-    console.log(storage)
-};
-numBlock.forEach(button => button.addEventListener('click', displayNum))
-
-//Convert array elements to number
-const operators = document.querySelectorAll('.operator');
-//let op = e.target.textContent;
-
-function processStorage(){
-    let number = parseInt(storage.join(''));
-    storage = [];
-    return number
-}       
-operators.forEach(button => button.addEventListener('click', processStorage));
-
-//Clear display and reset storage to empty array
-function clearDisplay() { 
-    display.textContent = '';
-    storage = []
-}
-clearDisplay()
-
-const clear = document.querySelector('.clear');
-clear.addEventListener('click', clearDisplay)
-
-//Equals function
-
-
-
-
-
-
-
-
-
-// Looking for keyCode? Use this function
-// function test(){
-//     window.addEventListener('keydown', (e) => {
-//         console.log(e)
-//     })
-// }
-// test()
+//Other variables
+const operator = '';
+const num1 = null;
+const num2 = null;
+const displayValue = 0;
