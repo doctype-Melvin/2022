@@ -30,7 +30,6 @@ const OPERATORS = [
         calc: function(num1, num2) {
             return num1/num2
         }
-        //Add backspace, clear, equals 
     }
 ]
 
@@ -66,6 +65,7 @@ function processStorage(){
 }       
 operators.forEach(button => button.addEventListener('click', processStorage));
 
+//Clear display and reset storage to empty array
 function clearDisplay() { 
     display.textContent = '';
     storage = []
@@ -75,16 +75,13 @@ clearDisplay()
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', clearDisplay)
 
+//Equals function
 
 
 
 
 
 
-//Keydown to trigger displayNum
-// window.addEventListener('keydown', (e) => {
-//     console.log(e)
-// })
 
 
 
