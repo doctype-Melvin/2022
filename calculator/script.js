@@ -1,26 +1,31 @@
-const OPERATIONS = [
+const CALCULATIONS = [
     {
-        operator: '+',
+        name: '+',
         calc: function (num1, num2){
             return num1+=num2
         }
     },
     {
-        operator: '-',
+        name: '-',
         calc: function(num1, num2){
             return num1 - num2
         }
     },
     {
-        operator: '*',
+        name: '*',
         calc: function(num1, num2){
             return num1*num2
         }
     },
     {
-        operator: '/',
+        name: '/',
         calc: function(num1, num2){
             return num1/num2
         }
     }
-]
+];
+
+function calculate(num1, num2, operator){
+    let calculation = CALCULATIONS.find(el => operator === el.name);
+    return calculation.calc(num1, num2)
+}
