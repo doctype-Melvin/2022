@@ -14,27 +14,53 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    height: 500px;
+    height: 100vh;
 }
 
-.calc-body {
-    background: #bad455;
-    padding: 15px;
-    border: solid 3px #66703d;
+.calculator {
+    display: grid;
+    grid-template-rows: repeat(5, 100px);
+    grid-template-columns: repeat(5, 100px);
+    background: black;
+    border: 5px solid rgb(143, 143, 143);
     border-radius: 5px;
-    width: 500px;
-    height: 300px;
 }
 
 .display {
-    background: #d7e4a6;
-    font-size: 2rem;
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    height: 3rem;
+    grid-column-start: span 5;
+    font-size: 4rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.span-two {
+    grid-column-start: span 2;
 }
 
+button {
+    font-size: 2rem;
+    border: white 2px solid;
+}
 
+.delete, .clear {
+    background: orangered;
+}
 
+.delete:hover, .clear:hover {
+    background: rgb(207, 90, 48);
+}
+.delete:active, .clear:active {
+    background:rgb(122, 55, 31)
+}
+
+.operator {
+    background: slateblue
+}
+.operator:hover{
+    background: rgb(152, 141, 224);
+}
+.operator:active{
+    background: rgb(74, 66, 128)
+}
