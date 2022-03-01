@@ -21,7 +21,7 @@ html {
     display: grid;
     grid-template-rows: repeat(5, 100px);
     grid-template-columns: repeat(5, 100px);
-    background: black;
+    background: rgb(83, 83, 83);
     border: 5px solid rgb(143, 143, 143);
     border-radius: 5px;
 }
@@ -41,7 +41,7 @@ html {
 
 button {
     font-size: 2rem;
-    border: white 2px solid;
+    border: rgb(192, 186, 186) 2px solid;
 }
 
 .delete, .clear {
@@ -56,7 +56,8 @@ button {
 }
 
 .operator {
-    background: slateblue
+    background: slateblue;
+    color:rgb(192, 186, 186)
 }
 .operator:hover{
     background: rgb(152, 141, 224);
