@@ -36,15 +36,16 @@ const numBlock = document.querySelectorAll('.num');
 const operators = document.querySelectorAll('.operator');
 const equals = document.querySelector('#equals').textContent
 
-let displayValue = display.textContent
+let displayValue = display.textContent;
 let num1 = '';
 let num2 = '';
 let operator = '';
 let stopAppending = false;
 let period = ''
+let result = null;
+let numberLength = null;
 
 //Numblock event listeners
-
 numBlock.forEach(button => button.addEventListener('click', (e) => {
     let num = e.target.textContent;
     appendNum(num);
@@ -59,22 +60,20 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         displayValue = '0'
     } else if (op === equals) { //Store display value to num2 when '=' is clicked and call fn
         num2 = displayValue;
-        let result = calculate(num1, num2, operator).toString();
+        result = calculate(num1, num2, operator).toString();
         display.textContent = result;
         num1 = result;
         displayValue = result;
         operator = '';
         num2 = '';
-        
     } else if (op !== equals) { //Repeats the first two steps as long as '=' is not being clicked
         stopAppending = false;
         num2 = displayValue;
-        let result = calculate(num1, num2, operator).toString();
+        result = calculate(num1, num2, operator).toString();
         operator = op;
         display.textContent = result;
         num1 = result;
         displayValue = '0';
-        
     }
 }));
 
@@ -83,7 +82,9 @@ const delKey = document.querySelector('.delete');
 delKey.addEventListener('click', () => {
     display.textContent = displayValue.slice(0, -1);
     displayValue = display.textContent;
-    if (displayValue.length === 0) display.textContent = '0'
+    if (displayValue.length === 0) display.textContent = '0';
+    numberLength = display.textContent.length;
+    limitInput(numberLength);
 })
 
 //All-clear key
@@ -117,7 +118,21 @@ function appendNum(number) {
         displayValue = displayValue+number;
         display.textContent = displayValue;
     }
+    numberLength = display.textContent.length
+    limitInput(numberLength)
 }
+
+//Function to limit number input
+function limitInput(length){
+    if (length >= 13) {
+        stopAppending = true;
+    }
+    if (length < 13) {
+        stopAppending = false;
+    }
+}
+
+//Function to round decimal
 
 
 
