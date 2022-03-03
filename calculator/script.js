@@ -41,6 +41,7 @@ let displayValue = display.textContent
 let num1 = '';
 let num2 = '';
 let operator = '';
+let stopAppending = false;
 
 //Numblock event listeners
 
@@ -52,11 +53,11 @@ numBlock.forEach(button => button.addEventListener('click', (e) => {
 //Operator keys event listeners
 operators.forEach(button => button.addEventListener('click', (e) => {
     let op = e.target.textContent;
-    if(operator === '') {
+    if(operator === '') { //Store display value to num1 when operator is clicked
         num1 = displayValue;
         operator = op;
         displayValue = '0'
-    } else if (op === equals) {
+    } else if (op === equals) { //Store display value to num2 when '=' is clicked and call fn
         num2 = displayValue;
         let result = calculate(num1, num2, operator).toString();
         display.textContent = result;
@@ -64,16 +65,26 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         displayValue = result;
         operator = '';
         num2 = '';
-     } else if (op !== equals) {
+        
+     } else if (op !== equals) { //Repeats the first two steps as long as '=' is not being clicked
+         stopAppending = false;
          num2 = displayValue;
          let result = calculate(num1, num2, operator).toString();
          operator = op;
          display.textContent = result;
          num1 = result;
          displayValue = '0';
-         console.log(operator)
+        
      }
 }));
+
+//Delete Key
+const delKey = document.querySelector('.delete');
+delKey.addEventListener('click', () => {
+    display.textContent = displayValue.slice(0, -1);
+    displayValue = display.textContent;
+    if (displayValue.length === 0) display.textContent = '0'
+})
 
 //All-clear key
 const acKey = document.querySelector('.clear');
@@ -83,11 +94,13 @@ acKey.addEventListener('click', () => {
     num1 = '';
     num2 = '';
     operator = '';
+    stopAppending = false;
     console.clear()
 })
 
 //Function to populate the display with numbers
 function appendNum(number) {
+    if(stopAppending) return
     if(displayValue === '0') {
         displayValue = number;
         display.textContent = displayValue;
