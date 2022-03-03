@@ -64,6 +64,14 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         displayValue = result;
         operator = '';
         num2 = '';
+     } else if (op !== equals) {
+         num2 = displayValue;
+         let result = calculate(num1, num2, operator).toString();
+         operator = op;
+         display.textContent = result;
+         num1 = result;
+         displayValue = '0';
+         console.log(operator)
      }
 }));
 
@@ -91,5 +99,4 @@ function appendNum(number) {
 
 
 
-//When inputs are set, the next operator calculates the result & starts new operation
 //When result is displayed, disable input/stop appending numbers
