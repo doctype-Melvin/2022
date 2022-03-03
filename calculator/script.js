@@ -34,7 +34,6 @@ function calculate(num1, num2, operator){
 const display = document.querySelector('.display');
 const numBlock = document.querySelectorAll('.num');
 const operators = document.querySelectorAll('.operator');
-const decimal = document.querySelector('.decimal');
 const equals = document.querySelector('#equals').textContent
 
 let displayValue = display.textContent
@@ -42,6 +41,7 @@ let num1 = '';
 let num2 = '';
 let operator = '';
 let stopAppending = false;
+let period = ''
 
 //Numblock event listeners
 
@@ -66,16 +66,16 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         operator = '';
         num2 = '';
         
-     } else if (op !== equals) { //Repeats the first two steps as long as '=' is not being clicked
-         stopAppending = false;
-         num2 = displayValue;
-         let result = calculate(num1, num2, operator).toString();
-         operator = op;
-         display.textContent = result;
-         num1 = result;
-         displayValue = '0';
+    } else if (op !== equals) { //Repeats the first two steps as long as '=' is not being clicked
+        stopAppending = false;
+        num2 = displayValue;
+        let result = calculate(num1, num2, operator).toString();
+        operator = op;
+        display.textContent = result;
+        num1 = result;
+        displayValue = '0';
         
-     }
+    }
 }));
 
 //Delete Key
@@ -94,8 +94,17 @@ acKey.addEventListener('click', () => {
     num1 = '';
     num2 = '';
     operator = '';
+    period = '';
     stopAppending = false;
     console.clear()
+})
+
+//Decimal key
+const decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', () => {
+    if (displayValue.includes('.')) return
+    period = '.'
+    appendNum(period)
 })
 
 //Function to populate the display with numbers
