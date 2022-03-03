@@ -61,7 +61,7 @@ operators.forEach(button => button.addEventListener('click', (e) => {
     } else if (op === equals) { //Store display value to num2 when '=' is clicked and call fn
         num2 = displayValue;
         result = calculate(num1, num2, operator).toString();
-        display.textContent = result;
+        display.textContent = roundDecimal(result);
         num1 = result;
         displayValue = result;
         operator = '';
@@ -71,7 +71,7 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         num2 = displayValue;
         result = calculate(num1, num2, operator).toString();
         operator = op;
-        display.textContent = result;
+        display.textContent = roundDecimal(result)
         num1 = result;
         displayValue = '0';
     }
@@ -133,7 +133,9 @@ function limitInput(length){
 }
 
 //Function to round decimal
+function roundDecimal(value){
+    let temp = value*1;
+    return Math.round(temp*1000)/1000
+    //console.log(temp, typeof temp)
+}
 
-
-
-//When result is displayed, disable input/stop appending numbers
