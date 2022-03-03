@@ -1,3 +1,6 @@
+//After calculation, number input should restart. 
+//Decimal numbers should be rounded to the thousandths.
+
 
 const CALCULATIONS = [
     {
@@ -21,6 +24,9 @@ const CALCULATIONS = [
     {
         name: '/',
         calc: function(num1, num2){
+            if(num2 === '0') {
+                return divisionZero()
+            }
             return num1/num2
         }
     }
@@ -58,23 +64,22 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         num1 = displayValue;
         operator = op;
         displayValue = '0'
-    } else if (op === equals) { //Store display value to num2 when '=' is clicked and call fn
+    } else if (op === equals && num1 !== '') { //Store display value to num2 when '=' is clicked and call fn
         num2 = displayValue;
-        result = calculate(num1, num2, operator).toString();
-        display.textContent = roundDecimal(result);
+        result = calculate(num1, num2, operator);
+        display.textContent = result
         num1 = result;
         displayValue = result;
         operator = '';
         num2 = '';
     } else if (op !== equals) { //Repeats the first two steps as long as '=' is not being clicked
-        stopAppending = false;
         num2 = displayValue;
-        result = calculate(num1, num2, operator).toString();
+        result = calculate(num1, num2, operator)
         operator = op;
-        display.textContent = roundDecimal(result)
+        display.textContent = result
         num1 = result;
         displayValue = '0';
-    }
+    } 
 }));
 
 //Delete Key
@@ -132,10 +137,13 @@ function limitInput(length){
     }
 }
 
-//Function to round decimal
+//Function to round decimal  --- Different approch for this functionality needed
 function roundDecimal(value){
     let temp = value*1;
     return Math.round(temp*1000)/1000
-    //console.log(temp, typeof temp)
 }
 
+function divisionZero(){
+    console.log('triggered')
+    return display.textContent = `Don't even try!`
+}
