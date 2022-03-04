@@ -1,33 +1,33 @@
-//After calculation, number input should restart. 
-//Decimal numbers should be rounded to the thousandths.
-
-
 const CALCULATIONS = [
     {
         name: '+',
         calc: function (num1, num2){
-            return num1*1+num2*1
+            result = num1*1+num2*1;
+            return Math.round(result*1000)/1000
         }
     },
     {
         name: '-',
         calc: function(num1, num2){
-            return num1 - num2
+            result = num1 - num2;
+            return Math.round(result*1000)/1000;
         }
     },
     {
         name: '*',
         calc: function(num1, num2){
-            return num1*num2
+            result =  num1*num2;
+            return Math.round(result*1000)/1000;
         }
     },
     {
         name: '/',
         calc: function(num1, num2){
             if(num2 === '0') {
-                return display.textContent = `Don't even try!` //divisionZero()
+                return display.textContent = `No can't do!` 
             }
-            return num1/num2
+            result =  num1/num2;
+            return Math.round(result*1000)/1000
         }
     }
 ];
@@ -54,9 +54,9 @@ let numberLength = null;
 //Numblock event listeners
 numBlock.forEach(button => button.addEventListener('click', (e) => {
     let num = e.target.textContent;
-    if (displayValue !== result) {
+    if (displayValue !== result) { //Append numbers in display
     appendNum(num);
-} else if (displayValue === result) {
+} else if (displayValue === result) { //Start new number input
     display.textContent = '0';
     displayValue = '0'
     appendNum(num)
@@ -66,7 +66,9 @@ numBlock.forEach(button => button.addEventListener('click', (e) => {
 //Operator keys event listeners
 operators.forEach(button => button.addEventListener('click', (e) => {
     let op = e.target.textContent;
-    if(operator === '') { //Store display value to num1 when operator is clicked
+     if (op === equals && num1 === '') {
+        return
+     } else if (operator === '') { //Store display value to num1 when operator is clicked
         num1 = displayValue;
         operator = op;
         displayValue = '0'
@@ -85,7 +87,7 @@ operators.forEach(button => button.addEventListener('click', (e) => {
         display.textContent = result
         num1 = result;
         displayValue = '0';
-    } 
+    }
 }));
 
 //Delete Key
@@ -142,15 +144,4 @@ function limitInput(length){
     if (length < 13) {
         stopAppending = false;
     }
-}
-
-//Function to round decimal  --- Different approch for this functionality needed
-function roundDecimal(value){
-    let temp = value*1;
-    return Math.round(temp*1000)/1000
-}
-
-function divisionZero(){
-    console.log('triggered')
-    return display.textContent = `Don't even try!`
-}
+};
