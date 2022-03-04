@@ -25,7 +25,7 @@ const CALCULATIONS = [
         name: '/',
         calc: function(num1, num2){
             if(num2 === '0') {
-                return divisionZero()
+                return display.textContent = `Don't even try!` //divisionZero()
             }
             return num1/num2
         }
@@ -48,13 +48,19 @@ let num2 = '';
 let operator = '';
 let stopAppending = false;
 let period = ''
-let result = null;
+let result = '';
 let numberLength = null;
 
 //Numblock event listeners
 numBlock.forEach(button => button.addEventListener('click', (e) => {
     let num = e.target.textContent;
+    if (displayValue !== result) {
     appendNum(num);
+} else if (displayValue === result) {
+    display.textContent = '0';
+    displayValue = '0'
+    appendNum(num)
+}
 }));
 
 //Operator keys event listeners
@@ -101,6 +107,7 @@ acKey.addEventListener('click', () => {
     num2 = '';
     operator = '';
     period = '';
+    result = '';
     stopAppending = false;
     console.clear()
 })
