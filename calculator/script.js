@@ -46,7 +46,7 @@ let displayValue = display.textContent;
 let num1 = '';
 let num2 = '';
 let operator = '';
-let stopAppending = false;
+let stopAppending 
 let period = ''
 let result = '';
 let numberLength = null;
@@ -66,7 +66,7 @@ numBlock.forEach(button => button.addEventListener('click', (e) => {
 //Operator keys event listeners
 operators.forEach(button => button.addEventListener('click', (e) => {
     let op = e.target.textContent;
-     if (op === equals && num1 === '') {
+     if (op === equals && num1 === '' ) {
         return
      } else if (operator === '') { //Store display value to num1 when operator is clicked
         num1 = displayValue;
