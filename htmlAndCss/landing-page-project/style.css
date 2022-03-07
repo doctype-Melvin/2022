@@ -50,8 +50,7 @@ ul a {
 }
 
 .hero {
-    padding: 0 50px;
-    padding-top: 40px;
+    padding: 40px 150px;
     flex: 1;
 }
 .hero-content {
@@ -146,7 +145,7 @@ ul a {
 .action {
     background: #f9faf8;
     flex: 1;
-    padding: 30px 50px;
+    padding: 30px 150px;
 }
 .card {
     background: #3882f6;
