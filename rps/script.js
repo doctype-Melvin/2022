@@ -31,12 +31,6 @@ const choices = document.querySelectorAll('[data-selection]');
     }));
 })();
 
-let counter = 0;
-function trackRounds(){
-    counter++;
-    console.log(counter)
-    return counter
-}
 
 //Play round function
 function playRound(choice) {
@@ -56,7 +50,7 @@ function playRound(choice) {
 
 //Winner function
 function whoWins(winner, loser) {
-   return winner.beats === loser.name
+    return winner.beats === loser.name
 }
 
 //Track points
@@ -64,23 +58,29 @@ const player = document.querySelector('[data-your-score]');
 const cpu = document.querySelector('[data-cpu-score]');
 
 function trackScore(score) {
-    score.innerText = parseInt(score.innerText)+1
+    score.innerText = parseInt(score.innerText)+1;
+    gameWinner(score.innerText)
     return score.innerText
+}
+
+//Declare game winner
+function gameWinner(score) {
+    console.log(score)
 }
 
 //Round messages
 const board = document.querySelector('#messages');
 const current = document.createElement('div');
-        current.classList.add('round-winner')
+current.classList.add('round-winner')
 const pHand = document.createElement('div');
 const cHand = document.createElement('div');
 
 function showHands(player, cpu) {
     let pIcon = player.icon
-        pHand.innerText = pIcon;
+    pHand.innerText = pIcon;
     let cIcon = cpu.icon
-        cHand.innerText = cIcon ;
-        board.append(pHand, current, cHand);
+    cHand.innerText = cIcon ;
+    board.append(pHand, current, cHand);
     trackHistory(pIcon, cIcon)
 }
 //Helper functions for message board
@@ -96,6 +96,12 @@ function draw() {
 
 // Add round history
 const history = document.querySelector('#history');
+    //Function adds round numbers
+        let counter = 0;
+        function trackRounds(){
+            counter++;
+            return counter
+        }
 
 function trackHistory(player, cpu) {
     const pHistory = document.createElement('div');
@@ -112,19 +118,5 @@ function trackHistory(player, cpu) {
         roundResult.append(pHistory, text, cHistory)
             history.after(roundResult)
 }
-// Change game mode (winner of x rounds or x points win)
-const hands = document.querySelector('#choices')
-const gameMode = document.createElement('div');
-
-const fiveRounds = document.createElement('button');
-fiveRounds.textContent = 'Best of 5';
-    const sevenRounds = document.createElement('button');
-    sevenRounds.textContent = 'Best of 7';
-        const elevenRounds = document.createElement('button');
-        elevenRounds.textContent = 'Best of 11';
-
-        gameMode.append(fiveRounds, sevenRounds, elevenRounds)
-middle.insertBefore(gameMode, hands)
-
 
 // Try adding animation for round initiation
