@@ -23,28 +23,34 @@ function computerChoice(){
 
 //Player choice function -- Start game
 const choices = document.querySelectorAll('[data-selection]');
-function startGame(){
+(function (){
     choices.forEach(button => button.addEventListener('click', () => {
-    let choiceName = button.dataset.selection;
-    let choice = RPS.find(choice => choice.name === choiceName);
-    playRound(choice);
-}));
-};
-startGame()
+        let choiceName = button.dataset.selection;
+        let choice = RPS.find(choice => choice.name === choiceName);
+        playRound(choice);
+    }));
+})();
+
+let counter = 0;
+function trackRounds(){
+    counter++;
+    console.log(counter)
+    return counter
+}
 
 //Play round function
 function playRound(choice) {
     let roboto = computerChoice();
     let playerWins = whoWins(choice, roboto);
     let robotoWins = whoWins(roboto, choice);
-        if(playerWins) {
+    if(playerWins) {
         trackScore(player),
         ply();
-            }else if(robotoWins) {
-            trackScore(cpu),
-            computer();
-                }else 
-                draw();
+    }else if(robotoWins) {
+        trackScore(cpu),
+        computer();
+    }else 
+    draw();
     showHands(choice, roboto);
 }
 
@@ -101,10 +107,10 @@ function trackHistory(player, cpu) {
         
         pHistory.innerText = player;
         cHistory.innerText = cpu;
-        text.innerText = 'Round'
+        text.innerText = `Round ${trackRounds()}`
             
         roundResult.append(pHistory, text, cHistory)
-            history.append(roundResult)
+            history.after(roundResult)
 }
 // Change game mode (winner of x rounds or x points win)
 const hands = document.querySelector('#choices')
