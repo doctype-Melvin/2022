@@ -1,129 +1,98 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Postcard example</title>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Advanced styling: Task 2</title>
     <style>
-        @font-face {
-            font-family: 'handwriting';
-            src: url('fonts/journal.woff2') format('woff2'),
-                url('fonts/journal.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
-        }
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
 
-        @font-face {
-            font-family: 'typewriter';
-            src: url('fonts/veteran_typewriter.woff2') format('woff2'),
-                url('fonts/veteran_typewriter.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
-            font: 1.3rem sans-serif;
-            padding: 0.5em;
-            margin: 0;
-            background: #222;
-        }
+      button,
+      input,
+      select {
+        font-family: inherit;
+        font-size: 100%;
+        padding: 0; margin: 0;
+      }
 
-        form {
-            position: relative;
-            width: 740px;
-            height: 498px;
-            margin: 0 auto;
-            padding: 1em;
-            box-sizing: border-box;
-            background: #FFF url(postcard.jpg);
-            /*create grid*/
-            display: grid;
-            grid-gap: 20px;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 10em 1em 1em 1em;
-        }
+      input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid grey;
+    border-radius: 25px;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    }
 
-        h1 {
-            font: 1em 'typewriter', monospace;
-            align-self: flex-end;
-        }
+    input[type="radio"]::before {
+        position: absolute;
+        display: block;
+        content: ' ';
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        background-color: blue;
+        font-size: 1em;
+        visibility: hidden;
+        right: 0.2em;
+        top: 0.2em;
+    }
 
-        #message {
-            grid-row: 1/5;
-        }
+    input[type="radio"]:checked::before{
+        visibility: visible;
+    }
 
-        #from, #reply {
-            display: flex;
-        }
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-        label {
-            font: .8em 'typewriter', sans-serif;
-        }
+    li {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
 
-        input, textarea {
-            font: 1.4em/1.5em 'handwriting', cursive, sans-serif;
-            border: none;
-            padding: 0 10px;
-            margin: 0;
-            width: 80%;
-            background: none;
-        }
+    label {
+        margin-left: 3px;
+        font-size: inherit;
+    }
+        </style>
+  </head>
 
-        input:focus, textarea:focus {
-            background: rgba(0,0,0,.1);
-            border-radius: 5px;
-        }
-        textarea {
-            display: block;
-            padding: 10px;
-            margin: 10px 0 0 -10px;
-            width: 100%;
-            height: 90%;
-            border-right: 1px solid;
-            overflow: auto;
-        }
-        button {
-            padding: 5px;
-            font: bold .6em sans-serif;
-            border: solid 2px #333;
-            border-radius: 5px;
-            background: none;
-            cursor: pointer;
-            transform: rotate(-1.5deg);
-        }
-
-        button::after{
-            content: ' >>>';
-        }
-
-        button:hover,
-        button:focus {
-            outline: none;
-            background-color: #000;
-            color: #FFF;
-        }
-    </style>
-</head>
-
-<body>
-<form>
-    <h1>to: Mozilla</h1>
-    <div id="from">
-        <label for="name">from:</label>
-        <input type="text" id="name" name="user_name">
-    </div>
-    <div id="reply">
-        <label for="mail">reply:</label>
-        <input type="text" id="mail" name="user_email">
-    </div>
-    <div id="message">
-        <label for="msg">Your message:</label>
-        <textarea name="user_message" id="msg" cols="30" rows="10"></textarea>
-    </div>
-    <div class="button">
-        <button type="submit">Send your message</button>
-    </div>
-</form>
-</body>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Who is your favorite pony?</legend>
+        <ul>
+          <li>
+            <label for="pinkie">Pinkie Pie</label>
+            <input type="radio" id="pinkie" name="pony" value="pinkie">
+          </li>
+          <li>
+            <label for="rainbow">Rainbow Dash</label>
+            <input type="radio" id="rainbow" name="pony" value="rainbow">
+          </li>
+          <li>
+            <label for="twilight">Twilight Sparkle</label>
+            <input type="radio" id="twilight" name="pony" value="twilight">
+          </li>
+        </ul>
+      </fieldset>
+    </form>
+  </body>
 
 </html>
