@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple sign up form</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            height: 100vh;
+        }
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        .wrapper {
+            background-color: rgb(214, 214, 214);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            margin: auto;
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        span {
+            margin: 0 0 20px 0;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 0 10px 0;
+            align-items: center;
+        }
+
+        .form-row > input {
+            width: 200px;
+        }
+
+        .radio-group {
+            margin: 0 0 10px 0;
+        }
+
+        input[type="checkbox"] {
+            margin: 0 5px 10px 0;
+        }
+
+        button {
+            background-color: rgb(86, 142, 246);
+            color: white;
+            outline: none;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 5px 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <span>Sign up</span>
+        <form>
+            <div class="form-row">
+                <label for="first-name">First Name</label>
+                <input type="text" name="first-name" id="first-name">
+            </div>
+            <div class="form-row">
+                <label for="last-name">Last Name</label>
+                <input type="text" name="last-name" id="last-name">
+            </div>
+            <div class="form-row">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="form-row">
+                <label for="pwd">Password</label>
+                <input type="password" name="pwd" id="pwd">
+            </div>
+            <div class="radio-group">
+                <label for="beginner">Beginner</label>
+                <input type="radio" name="radio" id="beginner">
+                <label for="intermediate">intermediate</label>
+                <input type="radio" name="radio" id="intermediate">
+                <label for="advanced">Advanced</label>
+                <input type="radio" name="radio" id="advanced">
+            </div>
+            <div><input type="checkbox" name="newsletter" id="newsletter" checked>Join monthly newsletter</div>
+                <button>Sign up</button>
+        </form>
+    </div>
+</body>
+</html>
