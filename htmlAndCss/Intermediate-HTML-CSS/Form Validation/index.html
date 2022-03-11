@@ -6,10 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
     <style>
-        
+      form {
+          font: 1em sans-serif;
+      }
+
+      p > label {
+          display: block;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      textarea,
+      fieldset {
+          width: 100%;
+          border: solid 1px #333;
+          box-sizing: border-box;
+      }
+
+      input:valid {
+          box-shadow: 0 0 5px 1px red;
+      }
+
+      input:focus:invalid {
+          box-shadow: none;
+      }
     </style>
 </head>
 <body>
-    
+    <form action="">
+        <p>
+            <fieldset>
+                <legend>Do you have a driver's license?<abbr title="This field is mandatory" aria-label="required">*</abbr></legend>
+                    <input type="radio" name="driver" id="r1" required value="yes">
+                    <label for="r1">Yes</label>
+                    <input type="radio" name="driver" id="r2" required value="no">
+                    <label for="r2">No</label>
+            </fieldset>
+        </p>
+        <p>
+            <label for="n1">How old are you?</label>
+            <input type="number" name="age" id="n1" min="12" max="120" step="1" pattern="\d+">
+        </p>
+        <p>
+            <label for="t1">What's your favourite fruit?<abbr title="This field is mandatory" aria-label="required">*</abbr></label>
+            <input type="text" name="fruit" id="t1" list="l1" required
+            pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range">
+            <datalist id="l1">
+                <option value="banana">Banana</option>
+                <option value="cherry">Cherry</option>
+                <option value="apple">Apple</option>
+                <option value="strawberry">Strawberry</option>
+                <option value="lemon">Lemon</option>
+                <option value="orange">Orange</option>
+            </datalist>
+        </p>
+        <p>
+            <label for="t2">What's your e-mail address</label>
+            <input type="email" name="email" id="t2">
+        </p>
+        <p><label for="t3">Leave a short message</label><textarea name="msg" id="t3" maxlength="140" rows="5"></textarea>
+        </p>
+        <p>
+            <button>Submit</button>
+        </p>
+    </form>
 </body>
 </html>
