@@ -6,10 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code along</title>
     <style>
-    
+            html {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50vh;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                max-width: 20vw;
+                background-color: antiquewhite;
+                padding: 15px;
+                border-radius: 25px;
+            }
+
+            form > div {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 5px 0;
+            }
+
+            form > button {
+                margin-top: 5px;
+                border: solid 1px black;
+                border-radius: 25px;
+                background-color: rgb(153, 153, 235);
+                color: white;
+                font-weight: 700;
+                padding: 5px;
+            }
+            
+            label {
+                margin-right: 5px;
+            }
+
+            div > input {
+                border-radius: 5px;
+                border: none;
+                font-size: 1em;
+
+            }
+
+            input[type="text"]:user-invalid,
+            input[type="email"]:user-invalid,
+            input[type="password"]:user-invalid {
+                border: solid 1px red;
+            }
     </style>
 </head>
 <body>
-    
+
+    <div class="wrapper">
+        <form action="" method="post">
+            <div>
+                <label for="full_name">Full Name*</label>
+                <input type="text" name="full_name" id="full_name" required>
+            </div>
+            <div>
+                <label for="email">Email*</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+                <label for="pwd">Password*</label>
+                    <input type="password" name="pwd" id="pwd" minlength="8" maxlength="20" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
