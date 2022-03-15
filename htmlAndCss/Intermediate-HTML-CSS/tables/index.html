@@ -1,98 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML tables</title>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My spending record</title>
+    <link href="minimal-table.css" rel="stylesheet" type="text/css">
     <style>
-   html {
-      font-family: sans-serif;
-    }
+      html {
+  font-family: sans-serif;
+}
 
-    table {
-      border-collapse: collapse;
-      border: 2px solid rgb(200,200,200);
-      letter-spacing: 1px;
-      font-size: 0.8rem;
-    }
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200,200,200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
 
-    td, th {
-      border: 1px solid rgb(190,190,190);
-      padding: 10px 20px;
-    }
+td, th {
+  border: 1px solid rgb(190,190,190);
+  padding: 10px 20px;
+}
 
-    td {
-      text-align: center;
-    }
+th {
+  background-color: rgb(235,235,235);
+}
 
-    caption {
-      padding: 10px;
-    }
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245,245,245);
+}
+
+caption {
+  padding: 10px;
+}
+
+tbody {
+  font-size: 95%;
+  font-style: italic;
+}
+
+tfoot {
+  font-weight: bold;
+}
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Items sold summary</h1>
+
     <table>
-        <colgroup>
-        <col span="2">
-        <col style="background-color: #97DB9A;">
-        <col style="width: 42px;">
-        <col style="background-color: #97DB9A;">
-        <col style="background-color: #DCC48E; border: 4px solid #C1437A;">
-        <col span="2" style="width: 42px;">
-        </colgroup>
-        <tr>
-          <td>&nbsp;</td>
-          <th>Mon</th>
-          <th>Tues</th>
-          <th>Wed</th>
-          <th>Thurs</th>
-          <th>Fri</th>
-          <th>Sat</th>
-          <th>Sun</th>
-        </tr>
-        <tr>
-          <th>1st period</th>
-          <td>English</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>German</td>
-          <td>Dutch</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <th>2nd period</th>
-          <td>English</td>
-          <td>English</td>
-          <td>&nbsp;</td>
-          <td>German</td>
-          <td>Dutch</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <th>3rd period</th>
-          <td>&nbsp;</td>
-          <td>German</td>
-          <td>&nbsp;</td>
-          <td>German</td>
-          <td>Dutch</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <th>4th period</th>
-          <td>&nbsp;</td>
-          <td>English</td>
-          <td>&nbsp;</td>
-          <td>English</td>
-          <td>Dutch</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
-  
-      
+      <caption>Items Sold August 2016</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <th colspan="3" scope="colgroup">Clothes</th>
+            <th colspan="2" scope="colgroup">Accessories</th>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <th id="trousers">Trousers</th>
+            <th id="skirts">Skirts</th>
+            <th id="dresses">Dresses</th>
+            <th id="bracelets">Bracelets</th>
+            <th id="rings">Rings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th rowspan="3" scope="rowgroup">Belgium</th>
+            <th id="antwerp">Antwerp</th>
+            <td headers="trousers antwerp">56</td>
+            <td headers="skirts antwerp">22</td>
+            <td headers="dresses antwerp">43</td>
+            <td headers="bracelets antwerp">72</td>
+            <td headers="rings antwerp">23</td>
+          </tr>
+          <tr>
+            <th id="gent">Gent</th>
+            <td headers="trousers gent">46</td>
+            <td headers="skirts gent">18</td>
+            <td headers="dresses gent">50</td>
+            <td headers="bracelets gent">61</td>
+            <td headers="rings gent">15</td>
+         </tr>
+         <tr>
+           <th id="brussels">Brussels</th>
+           <td headers="trousers brussels">51</td>
+           <td headers="skirts brussels">27</td>
+           <td headers="dresses brussels">38</td>
+           <td headers="bracelets brussels">69</td>
+           <td headers="rings brussels">28</td>
+         </tr>
+         <tr>
+           <th rowspan="2" scope="rowgroup">The Netherlands</th>
+           <th id="amsterdam">Amsterdam</th>
+           <td headers="trousers amsterdam">89</td>
+           <td headers="skirts amsterdam">34</td>
+           <td headers="dresses amsterdam">69</td>
+           <td headers="bracelets amsterdam">85</td>
+           <td headers="rings amsterdam">38</td>
+         </tr>
+         <tr>
+           <th id="utrecht">Utrecht</th>
+           <td headers="trousers utrecht">80</td>
+           <td headers="skirts utrecht">12</td>
+           <td headers="dresses utrecht">43</td>
+           <td headers="bracelets utrecht">36</td>
+           <td headers="rings utrecht">19</td>
+         </tr>
+       </tbody>
+    </table>
+
 </body>
 </html>
