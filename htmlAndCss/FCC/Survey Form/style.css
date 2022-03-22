@@ -33,6 +33,7 @@ body {
 
 form > h2 {
     text-align: center;
+    width: 450px;
 }
 
 .personal-info {
@@ -45,6 +46,7 @@ form > h2 {
 fieldset {
     max-width: 450px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 legend {
@@ -75,7 +77,6 @@ input[type="button"] {
     font-size: 15px;
     border: 1px solid rgb(170, 90, 103);
     border-radius: 5px;
-    margin-top: 5px;
 }
 
 input[type="button"]:hover {
