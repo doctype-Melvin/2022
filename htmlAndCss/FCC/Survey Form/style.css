@@ -12,29 +12,80 @@ body {
     display: flex;    
     justify-content: center;
     margin: 0;
+    height: 100vh;
 }
 
-.wrapper {
-    display: flex;
-}
 
 .background-image{
-    flex: 1;
+    flex: 0.8;
+    background: 
+    url('https://images.unsplash.com/photo-1586596436497-8d6f8d1d921f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHJhaW5ib3clMjB0ZXh0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60')
+    top right / 100vh
+    no-repeat
 }
 
 .container {
-    flex: 3;
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.personal_info {
+form > h2 {
+    text-align: center;
+}
+
+.personal-info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    
 }
 
 fieldset {
     max-width: 450px;
+    border-radius: 5px;
+}
+
+legend {
+    font-size: 1.2rem;
 }
 
 fieldset > label + input {
     margin-bottom: 5px;
+}
+
+.data-input {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.recommendation {
+    margin: 5px 0px;
+}
+
+input[type="button"] {
+    background-color: rgb(255, 187, 0);
+    width: 450px;
+    font-size: 15px;
+    border: 1px solid rgb(170, 90, 103);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+input[type="button"]:hover {
+    cursor: pointer;
+    background-color: rgb(248, 207, 94);
+    border: 1px solid rgb(202, 131, 143);
+}
+
+input[type="button"]:active {
+    cursor: pointer;
+    background-color: rgb(204, 163, 50);
+    border: 1px solid rgb(211, 170, 177);
 }
