@@ -12,5 +12,29 @@ body {
     display: flex;    
     justify-content: center;
     margin: 0;
-    color: white;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.background-image{
+    flex: 1;
+}
+
+.container {
+    flex: 3;
+}
+
+.personal_info {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    max-width: 450px;
+}
+
+fieldset > label + input {
+    margin-bottom: 5px;
 }
