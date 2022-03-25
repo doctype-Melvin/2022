@@ -1,184 +1,199 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
 }
 
-body {
+.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.wrapper, #header {
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-    margin-top: 2px;
-}
-
 #header {
+    background-color: rgb(195, 193, 193);
+    width: 100%;
+    text-align: center;
     position: sticky;
     top: 0;
 }
 
+#header-img {
+    width: 35px;
+}
+
 #logo {
-    text-align: center;
-    font-size: 2rem;
-    background-color: rgb(216, 216, 216);
-    border: solid 2px rgb(153, 153, 153);
-    border-radius: 5px;
-    padding: 3px;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 ul {
     list-style-type: none;
-    padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    padding: 0;
+}
+
+ul > li > a {
+    text-decoration: none;
+    color: black;
 }
 
 ul > li {
-    text-align: center;
-    background-color: rgb(195, 200, 199);
-    padding: 2px;
-    border-radius: 2px;
+    margin-bottom: 5px;
 }
 
-li > a {
-    text-decoration: none;
-    cursor: pointer;
-    color: black;
-    font-size: 18px;
-}
-
-h2, h3 {
-    text-align: center;
+.form-field {
+    display: flex;
+    flex-direction: column;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-form > input,
-form > button {
-    width: 250px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    border: solid 2px rgb(255, 185, 55);
-}
-
-
-#submit {
-    background-color: rgb(245, 245, 108);
-}
-
-
-#demo {
-    position: relative;
-    padding-bottom: 55%;
-    height: 0;
-    margin-top: 15px;
     margin-bottom: 15px;
 }
 
-#demo iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+button, input, .box, .title {
+    border-radius: 5px;
+}
+
+button {
+    background-color: rgb(253, 211, 74);
+    border: solid 1px rgb(184, 151, 43);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(251, 229, 157);
+    border: solid 1px rgb(175, 122, 54);
+}
+
+button:active {
+    background-color: rgb(255, 196, 2);
+    border: solid 1px rgb(255, 253, 145);
+}
+
+#product {
+    width: 350px;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+#demo > iframe {
+    max-width: 350px;
+    margin-bottom: 15px;
 }
 
 #pricing {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-bottom: 8vh;
 }
 
 .box {
+    border: solid 1px black;
+    width: 65vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
-    border: solid black 2px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding: 10px
-}
-
-.title, .price, 
-.detail {
+    justify-content: space-around;
     margin-bottom: 10px;
 }
 
 .box > .title {
-    background-color: rgb(201, 202, 202);
-    padding: 5px;
-    max-width: 100%;
+    background-color: rgb(255, 218, 97);
+    width: 100%;
     text-align: center;
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.box > button {
-    max-width: 100%;
-    background-color: rgb(245, 245, 108);
-    border: rgb(255, 185, 55) solid 2px;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 1.15rem;
-}
-
-.box > button:hover {
-    max-width: 100%;
-    background-color: rgb(255, 255, 255);
-    border: rgb(233, 164, 35) solid 2px;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 1.15rem;
-}
-
-.box > button:active {
-    max-width: 100%;
-    background-color: rgb(152, 179, 255);
-    border: rgb(0, 0, 0) solid 2px;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 1.15rem;
-    scale: 1.12;
+.box > button, .title,
+.price, .detail {
+    margin-bottom: 8px;
 }
 
 #footer {
+    background-color: rgb(253, 211, 74);
+    width: 100%;
     text-align: center;
-    background-color:rgb(226, 234, 255);
+    position: fixed;
+    bottom: 0;
 }
 
-footer > ul  {
+#footer > ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-footer > ul > li {
-    background-color: transparent;
-}
+@media only screen and (min-width: 500px) {
+    #demo > iframe {
+        max-width: 460px;
+        max-height: 315px;
+    }
 
-@media screen and (min-width: 800px) {
-    .wrapper, #header {
+    #header {
+        background-color: rgb(195, 193, 193);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 2px;
+    }
+
+    #header > nav > ul {
+        display: flex;
+        margin-left: 60vw;
+    }
+
+    #header > nav > ul > li {
+        margin-left: 10px;
+        font-size: 1.15rem;
+    }
+
+
+    #logo {
+        font-size: 37px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    #product {
+        width: 45vw;
+    }
+    .box {
+        border: solid 1px black;
+        width: 35vw;
         display: flex;
         flex-direction: column;
-        max-width: 100%;
-        margin-top: 2px;
-    }
-
-    #header, ul {
-        flex-direction: row;
-    }
-
-    #pricing {
-        flex-direction: row;
+        align-items: center;
         justify-content: space-around;
     }
+    
+}
+
+@media only screen and (min-width: 1100px) {
+
+    #pricing {
+        display: flex;
+        width: 55vw;
+    }
+    .box {
+        border: solid 1px black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 15px;
+    }
+    
+    .box > .title {
+        background-color: rgb(255, 221, 111);
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
 }
