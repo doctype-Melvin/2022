@@ -1,0 +1,199 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header {
+    background-color: rgb(195, 193, 193);
+    width: 100%;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+#header-img {
+    width: 35px;
+}
+
+#logo {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul > li > a {
+    text-decoration: none;
+    color: black;
+}
+
+ul > li {
+    margin-bottom: 5px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+button, input, .box, .title {
+    border-radius: 5px;
+}
+
+button {
+    background-color: rgb(253, 211, 74);
+    border: solid 1px rgb(184, 151, 43);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(251, 229, 157);
+    border: solid 1px rgb(175, 122, 54);
+}
+
+button:active {
+    background-color: rgb(255, 196, 2);
+    border: solid 1px rgb(255, 253, 145);
+}
+
+#product {
+    width: 350px;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+#demo > iframe {
+    max-width: 350px;
+    margin-bottom: 15px;
+}
+
+#pricing {
+    margin-bottom: 8vh;
+}
+
+.box {
+    border: solid 1px black;
+    width: 65vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.box > .title {
+    background-color: rgb(255, 218, 97);
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.box > button, .title,
+.price, .detail {
+    margin-bottom: 8px;
+}
+
+#footer {
+    background-color: rgb(253, 211, 74);
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+#footer > ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 500px) {
+    #demo > iframe {
+        max-width: 460px;
+        max-height: 315px;
+    }
+
+    #header {
+        background-color: rgb(195, 193, 193);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 2px;
+    }
+
+    #header > nav > ul {
+        display: flex;
+        margin-left: 60vw;
+    }
+
+    #header > nav > ul > li {
+        margin-left: 10px;
+        font-size: 1.15rem;
+    }
+
+
+    #logo {
+        font-size: 37px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    #product {
+        width: 45vw;
+    }
+    .box {
+        border: solid 1px black;
+        width: 35vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    
+}
+
+@media only screen and (min-width: 1100px) {
+
+    #pricing {
+        display: flex;
+        width: 55vw;
+    }
+    .box {
+        border: solid 1px black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 15px;
+    }
+    
+    .box > .title {
+        background-color: rgb(255, 221, 111);
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+}

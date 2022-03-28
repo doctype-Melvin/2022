@@ -11,94 +11,138 @@ html {
 body {
     display: flex;    
     justify-content: center;
-    margin: 0;
-    color: white;
+    margin: 0;   
 }
-.bg-image{
-    background-image: url("https://www.selbststaendig-machen.com/wp-content/uploads/2018/02/Coworking-Hamburg.jpg");
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.form-container {
+    background-color: #d6dad7a2;
+    padding: 10px;
+}
+
+.container {
     display: flex;
     justify-content: center;
-}
-#main{
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    max-width: 900px;
+    width: 100vw;
+    background: url('https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-size: cover;
 }
 
-#header{
+form > p {
     text-align: center;
-    margin-bottom: 5px;
-}
-#header p {
-    font-size: 1.1rem;
-    font-weight: 600;
+    width: 450px;
 }
 
-#container{
-    background: rgba(102, 61, 126, 0.85);
-    padding: 1.85rem 1.25rem;
-    color: white;
-    border-radius: 5px;
+.personal-info {
+    display: flex;
+    flex-direction: column;    
 }
 
-#name, #email,
-#number, #dropdown {
+fieldset {
+    max-width: 450px;
     border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+legend {
     font-size: 1.2rem;
-    border: white 1px solid
 }
 
-#dropdown {
-    background-color: white;
+fieldset > label {
+    margin-bottom: 5px;
+    margin-right: auto;
 }
 
-.group{
+fieldset > input {
+    margin-bottom: 10px;
+}
+
+.data-input {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-}
-.radio-input,
-.checkbox-input {
-    display: inline-block;
-    min-height: 1.25rem;
-    min-width: 1.25rem;
 }
 
-.group .optional {
-    display: inline;
-    font-size: 0.75rem;
-}
-.group label {
-    font-size: 1.25rem;
-    margin-bottom: 5px;
-}
-.group p {
-    font-size: 1.25rem;
-    font-weight: 600;
+textarea {
+    resize: none;
+    margin-bottom: 10px;
 }
 
-#comments {
-    min-height: 120px;
-    font-size: 1.2rem;
+.recommendation {
+    margin: 5px 0px;
 }
 
-#submit {
-    font-size: 1.2rem;
-    background: rgb(65, 126, 79);
-    color: white;
+input[type="submit"] {
+    background-color: rgb(255, 187, 0);
+    width: 450px;
+    font-size: 15px;
+    border: 1px solid rgb(170, 90, 103);
     border-radius: 5px;
-    border: rgb(65, 126, 79);
-    padding: 5px 0;
+    margin-bottom: 15px;
 }
-#submit:hover {
+
+input[type="submit"]:hover {
     cursor: pointer;
-    background: rgb(76, 148, 93);
+    background-color: rgb(248, 207, 94);
+    border: 1px solid rgb(202, 131, 143);
+}
+
+input[type="submit"]:active {
+    cursor: pointer;
+    background-color: rgb(204, 163, 50);
+    border: 1px solid rgb(211, 170, 177);
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type='text']:user-invalid, 
+input[type='email']:user-invalid,
+input[type='tel']:user-invalid,
+input[type='number']:user-invalid {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+
+input[type='text']:user-valid, 
+input[type='email']:user-valid,
+input[type='number']:user-valid  {
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+input[type='text'], 
+input[type='email'],
+input[type='tel'],
+input[type='number'] {
+    border-radius: 5px;
+    border: solid rgb(149, 149, 149) 1px;
+}
+
+.dropdown {
+    width: 350px;
+    border: 1px solid rgb(149, 149, 149);
+    border-radius: 5px;
+    background-color: rgb(255, 187, 0);
+}
+
+.credit {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 490px) {
+    .form-container {
+        max-width: 355px;
+    }
+    #description {
+        max-width: 355px;
+    }
+    .dropdown,
+    textarea {
+        max-width: 300px;
+    }
+    input[type="submit"] {
+        max-width: 335px;
+    }
 }

@@ -5,100 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Survey Form</title>
 </head>
 <body>
-    <div class="bg-image">
-    
-    <div id="main">
-        
-    <div id="header">
-        <h1 id="title">You speak, we listen</h1>
-        <p id="description">Our goal is to help you to conquer the challenges of your carrer.</p>
-        <p>To optimize your experience we want to know, how we can improve our service to your benefit. </p>
-    </div>
-        <div id="container">
-        <form id="survey-form">
-            <div class="group">
-            <label for="name" id="name-label">Name</label>
-            <input type="text" id="name" placeholder="Name" required>
-            </div>
-            <div class="group">
-            <label for="email" id="email-label">Email</label>
-            <input type="email" id="email" placeholder="EMail" required>
-            </div>
-            <div class="group">
-            <label for="number" id="number-label">Age <p class="optional">(optional)</p></label>
-            <input type="number" id="number" placeholder="Age" min="14" max="99">
-            </div>
-                <div class="group">
-                <label for="carreer-level">Choose your carreer level</label>
-                <select name="carreer-level" id="dropdown">
-                    <option value="choice">Select current role</option>
-                    <option value="learner-ft">Full-time learner</option>
-                    <option value="learner-pt">Part-time learner</option>
-                    <option value="entry">Entry Level</option>
-                    <option value="junior">Junior Dev</option>
-                    <option value="senior">Senior Dev</option>
-                    <option value="mgmt">Management</option>
-                </select>
-                </div>
-                    <div class="group">
-                        <p>Would you recommend our services to coworkers and friends?</p>
-                    <label>
-                    <input class="radio-input" type="radio" name="recommend" value="definitely">
-                    Definitely
-                    </label>
-                    <label>
-                    <input class="radio-input" type="radio" name="recommend" value="maybe">
-                    Maybe
-                    </label>
-                    <label>
-                    <input class="radio-input" type="radio" name="recommend" value="no">
-                    No
-                    </label>
-                    </div>
-                        <div class="group">
-                            <p>What has been the most positive aspect of our service?</p>
-                        <label>
-                        <input class="checkbox-input" type="checkbox" value="online-learning">
-                        Online Learning
+       <div class="container">
+           <div class="form-container">
+               <h1 id="title">Catchy title</h1>
+               <form action="" method="post" id="survey-form">
+                   <p id="description">Please take a moment to help us improve our services.</p>
+                   <fieldset class="personal-info">
+                       <legend>Personal information</legend>
+                       <label for="name" id="name-label">First Name<abbr>*</abbr></label>
+                       <input type="text" id="name" pattern="[a-zA-Z]{1,20}" placeholder="Josh" required>
+                    
+                       <label for="last_name">Last Name<abbr>*</abbr></label>
+                       <input type="text" name="last_name" id="last_name" pattern="[a-zA-Z]{1,20}" placeholder="Green" required>
+                    
+                       <label for="email" id="email-label">Email<abbr>*</abbr></label>
+                       <input type="email" name="email" id="email" placeholder="joshG@example.com" required>
+                       <label for="number" id="number-label">Age</label>
+                       <input type="number" name="age" id="number" min="6" max="99" placeholder="18" required>
+                       <label for="phone">Phone Number</label>
+                       <input type="tel" name="phone" id="phone" pattern="[0-9]{1,15}">
+                        
+                       <label for="newsletter">
+                        <input type="checkbox" value="newsletter" name="newsletter" id="newsletter" checked> Yes, I want to receive the monthly Newsletter
+                       </label>
+                   </fieldset>
+                   <fieldset id="dropdown">
+                       <legend>Where did you hear from us?</legend>
+                       <select class="dropdown">
+                           <option value="ig">Instagram</option>
+                           <option value="fb">Facebook</option>
+                           <option value="blackboard">Blackboard</option>
+                           <option value="other-ad">Other Ads</option>
+                       </select>
+                   </fieldset>
+                   <fieldset class="data-input">
+                       
+                    <legend>What are some good things?</legend>
+                       <label for="tutorial">                           
+                           <input type="checkbox" value="tutorial" name="tutorial" id="tutorial"> Tutorials
+                       </label>
+                       <label for="online-class">
+                           <input type="checkbox" value="online-class" name="online-class" id="online-class"> Online Classes
                         </label>
-                        <label>
-                        <input class="checkbox-input" type="checkbox" value="tutoring">
-                        Tutoring
+                        <label for="live-chat">
+                            <input type="checkbox" value="live-chat" name="live-chat" id="live-chat"> Live Chat Help</input>
                         </label>
-                        <label>
-                        <input class="checkbox-input" type="checkbox" value="community">
-                        Community Support
+                        <label for="community-support">
+                            <input type="checkbox" value="community-support" name="community-support" id="community-support"> Community Support</input>
                         </label>
-                        </div>
-                        <div class="group">
-                            <p>What is your biggest take-away from our courses?</p>
-                        <label>
-                        <input class="checkbox-input" type="checkbox" value="learning-to-learn">
-                        Learning about learning
-                        </label>
-                        <label>
-                        <input class="checkbox-input" type="checkbox" value="new-skills">
-                        New skills
-                        </label>
-                        <label>
-                        <input class="checkbox-input" type="checkbox" value="improvement">
-                        Skill improvement
-                        </label>
-                        </div>
-                            <div class="group">
-                                <p>Any further suggestions?</p>
-                            <textarea id="comments" placeholder="Comment"></textarea>
+
+                   </fieldset>
+                   <fieldset class="improvements">
+                       <legend>What can we improve?</legend>
+                       <textarea name="free-text" id="free-text" cols="55" rows="7"></textarea>
+                       Would you recommend us?
+                        <div class="recommendation">
+                            <label for="yes"><input type="radio" value="yes" name="radio" id="yes" checked>Yes</label>
+                            <label for="no"><input type="radio" value="no" name="radio" id="no">No</label>
                             </div>
-                                <div class="group">
-                                <button type="submit" id="submit" onclick="thankYou()">Submit</button>
-                                </div>
-        </form>
-    </div>
-    </div>
-</div>
-    <script>function thankYou(){alert('Thank you for your time!')}</script>
+                   </fieldset>
+                   <div class="submit">
+                       <input type="submit" value="Send" id="submit">
+                    </div>
+               </form>
+               <div class="credit">© Background by Sean Sinclair <a href="https://www.instagram.com/seanwsinclair/">@seanwsinclair</a></div>
+           </div>
+       </div>
+    <script></script>
 </body>
 </html>
