@@ -3,7 +3,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@ html, body {
 
 .flex-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 .image-container {
@@ -39,7 +39,7 @@ html, body {
 
 .logo-area {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 0;
     right: 0;
     display: flex;
@@ -82,8 +82,7 @@ html, body {
     width: min(800px, 80%);
     text-align: justify;
     margin-left: auto;
-    margin-right: auto;   
-    margin-top: 55px;
+    margin-right: auto;
 }
 
 form {
@@ -101,6 +100,7 @@ fieldset {
 fieldset > h3 {
     font-size: 24px;
     margin-left: 15%;
+    margin-top: 10px;
 }
 
 .inputs{
