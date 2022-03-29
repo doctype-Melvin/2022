@@ -33,7 +33,7 @@
                             <label for="">Email</label>
                             <input tabindex="3" type="email" name="email" id="email" required>
                             <label for="pwd">Password</label>
-                            <input tabindex="5" type="password" name="pwd" id="pwd" class="pwd" required>
+                            <input tabindex="5" id="pwd" type="password" name="pwd" id="pwd" class="pwd" required>
                         </div>
                         <div class="inputs-right">
                             <label for="last_name">Last Name</label>
@@ -41,7 +41,7 @@
                             <label for="phone">Phone Number</label>
                             <input tabindex="4" type="tel" name="phone" id="phone" class="phone" pattern="[0-9]{1,16}">
                             <label for="pwd">Confirm Password</label>
-                            <input tabindex="6" type="password" name="pwd" id="pwd" class="pwd" required>
+                            <input tabindex="6" type="password" name="pwd" id="pwdcon" class="pwd" required>
                         </div>
                     </div>
                 </fieldset>
@@ -50,5 +50,21 @@
             <p class="log-in">Already have an account? <a tabindex="8" href="" target="_blank" rel="noopener noreferrer">Log in</a></p>
         </div>
     </div>
+    <script>
+        let pass = document.getElementById('pwd');
+        let passcon = document.getElementById('pwdcon');
+        let message = document.createElement('p');
+        message.textContent = `*Passwords don't match`
+        message.style = `color:red; font-size:10px`;
+        function validate() {
+            if (pass.value === passcon.value) {
+                return
+            } else {
+                passcon.append(message);
+            }
+        }
+
+        passcon.addEventListener('keypress', validate())
+    </script>
 </body>
 </html>

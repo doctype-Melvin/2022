@@ -157,6 +157,7 @@ button {
 
 button:hover {
     background-color: #355c8983;
+    cursor: pointer;
 }
 button:active {
     background-color: #355c89;
