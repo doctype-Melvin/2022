@@ -8,6 +8,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="flex-container">
+        <div class="image-container">
+            <img src="https://bit.ly/3qII6VC" alt="background">
+            <div class="logo-area">
+                <div class="logo"><img src="pacifism-peace-svgrepo-com.svg" alt=""></div>
+                <div class="logo-name">The Peace Company</div>
+            </div>
+            <div class="credit">Photo by <a href="https://unsplash.com/@hans_isaacson">Hans Isaacson</a> on <a href="https://www.unsplash.com">Unsplash</a></div>
+        </div>
+        <div class="form-container">
+            <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+        Inventore quis dicta, unde saepe dolor adipisci?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, itaque. Assumenda, repellendus!
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae quisquam 
+        assumenda neque obcaecati accusamus, tempore doloremque? Impedit, sapiente.</p>
+            <form class="form">
+                <fieldset class="input-area">
+                    <h3>Let's do this!</h3>
+                    <div class="inputs">
+                        <div class="inputs-left">
+                            <label for="first_name">First Name</label>
+                            <input tabindex="1" type="text" name="first_name" id="first_name" class="first_name" required pattern="[a-zA-Z]{1,20}">
+                            <label for="">Email</label>
+                            <input tabindex="3" type="email" name="email" id="email" required>
+                            <label for="pwd">Password</label>
+                            <input tabindex="5" type="password" name="pwd" id="pwd" class="pwd" required>
+                        </div>
+                        <div class="inputs-right">
+                            <label for="last_name">Last Name</label>
+                            <input tabindex="2" type="text" name="last_name" id="last_name" class="last_name" required pattern="[a-zA-Z]{1,20}">
+                            <label for="phone">Phone Number</label>
+                            <input tabindex="4" type="tel" name="phone" id="phone" class="phone" pattern="[0-9]{1,16}">
+                            <label for="pwd">Confirm Password</label>
+                            <input tabindex="6" type="password" name="pwd" id="pwd" class="pwd" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <button tabindex="7">Create Account</button>
+            </form>
+            <p class="log-in">Already have an account? <a tabindex="8" href="" target="_blank" rel="noopener noreferrer">Log in</a></p>
+        </div>
+    </div>
 </body>
 </html>
