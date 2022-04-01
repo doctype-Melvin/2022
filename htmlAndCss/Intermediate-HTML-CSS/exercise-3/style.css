@@ -1,0 +1,118 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "sidebar nav"
+    "sidebar article"
+    "footer footer";
+    grid-gap: 3px;
+    height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    display: grid;
+    grid-template-areas:
+    "logo ... header-links";
+    background-color: #6c6c6c;
+    color: white;
+    align-items: center;
+}
+
+.logo {
+    grid-area: logo;
+    font-size: 2rem;
+}
+
+.menu {
+    align-self: center;
+}
+
+.menu > ul {
+    grid-area: header-links;
+    display: grid;
+    grid-template: 1fr / repeat(4, 1fr);
+    font-size: 1.25rem;
+    list-style-type: none;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    display: grid;
+    grid-template: repeat(4, 1fr) / 1fr;
+    background-color: rgb(241, 117, 72);
+    gap: 50px;
+    justify-items: center;
+    align-items: center;
+}
+
+.sidebar > * {
+    background-color: #fff;
+    width: 90%;
+    height: 90%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.photo {
+    border-radius: 15px;
+}
+.nav {
+    grid-area: nav;
+    display: grid;
+    grid-template: 0.5fr / repeat(3, 1fr);
+    background-color: rgb(241, 117, 72);
+}
+
+.nav > ul {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    list-style-type: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.article {
+    grid-area: article;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(auto-fit, minmax(250px, 1fr));
+    background-color: #c8c8d3;
+    grid-gap: 15px;
+    padding: 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 15px;
+    height: 200px; 
+}
+.title {
+    text-align: center;
+    font-size: 1.15em;
+}
+
+.footer {
+    grid-area: footer;
+    display: grid;
+    grid-template: 0.5fr / repeat(3, 1fr);
+    background-color: #6c6c6c;
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer > p {
+    grid-area: 1 / 2;
+    text-align: center;
+}
