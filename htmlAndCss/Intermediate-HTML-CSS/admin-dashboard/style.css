@@ -3,11 +3,11 @@
 }
 
 :root {
-    --sidebar-color: #474973;
-    --accent-color1: #F1DAC4;
-    --accent-color2: #A69CAC;
-    --darker-color1: #161B33;
-    --darker-color2: #0D0C1D;
+    --sidebar-color: #FFC09F;
+    --accent-color1: #96CDFF;
+    --accent-color2: #FFEE93;
+    --darker-color1: #FCF5C7;
+    --darker-color2: #ADF7B6;
 }
 
 html, body {
@@ -18,51 +18,7 @@ html, body {
 }
 
 .wrapper {
-    display: grid;
-    grid-template: 1fr / 1fr 4fr;
-}
-
-.sidebar {
-    background-color: var(--sidebar-color);
-    color: #fff;
     height: 100vh;
-}
-
-.admin1 > a, .admin2 > a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.logo > img {
-    height: 50px;
-    width: 50px;
-}
-
-.icon {
-    height: 35px;
-    width: 35px;
-}
-
-.user {
-    border-radius: 50px;
-    height: 70px;
-}
-
-.user-big {
-    border-radius: 50px;
-    height: 100px;
-}
-
-.main {
     display: grid;
-    grid-template: 1fr 3fr / 1fr;
-}
-
-.content-grid {
-    display: grid;
-    grid-template: 1fr / 3fr 1fr;
-}
-
-.share-button {
-    height: 20px;
+    grid-template: 1fr / 1fr 6fr;
 }
