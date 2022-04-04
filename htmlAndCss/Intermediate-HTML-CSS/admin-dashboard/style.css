@@ -22,3 +22,148 @@ html, body {
     display: grid;
     grid-template: 1fr / 1fr 6fr;
 }
+/*Sidebar*/
+
+.sidebar {
+    background-color: var(--accent-color1);
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.dash {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.dash > img {
+    margin-right: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul > li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+li > img {
+    margin-right: 20px;
+}
+
+.dash, ul {
+    margin-bottom: 30px;
+}
+
+.icon-med {
+    height: 40px;
+}
+
+.icon-small {
+    height: 27px;
+}
+
+/*Main*/
+
+.main {
+    background-color: var(--darker-color2);
+    display: grid;
+    grid-template: 1fr 5fr / 1fr;
+}
+
+/*Header*/
+
+.header {
+    background-color: #fff;
+    padding: 15px 40px;
+}
+
+.top > p {
+    display: inline;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.searchbar {
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+    width: 30%;
+    height: 1.75rem;
+    font-size: 1.1rem;
+}
+
+.top #bell {
+    margin-left: auto;
+}
+
+#bell, .avatar-small {
+    margin-right: 30px;
+}
+
+.avatar-small {
+    height: 40px;
+    border-radius: 50%;
+}
+
+.avatar {
+    height: 60px;
+    border-radius: 50%;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+}
+
+.bottom > #button {
+    margin-left: auto;
+}
+
+.bottom > button {
+    margin-right: 25px;
+    background-color: var(--accent-color1);
+    border: none;
+    width: 8em;
+    height: 3em;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.avatar {
+    margin-right: 25px;
+}
+
+.bottom #hi {
+    margin: 0;
+}
+
+#user {
+    font-weight: 700;
+    font-size: larger;
+    margin: 0;
+}
+
+/*Main Grid*/
+
+.cards {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+}
+
+.card {
+    border: solid black 1px;
+}
