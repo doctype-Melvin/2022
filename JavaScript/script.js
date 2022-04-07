@@ -33,6 +33,8 @@ function addToLibrary(){
 }
 button.addEventListener('click', addToLibrary)
 
-
-
-
+//Function to add book info to cards
+function showInfo(){
+for (let i = 0; i < theLibrary.length; i++) {
+    card.textContent = theLibrary[i].info()
+}}
