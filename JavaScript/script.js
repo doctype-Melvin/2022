@@ -1,45 +1,71 @@
-//Library Cards
-let card = document.querySelector('.card');
-let title = document.querySelector('.title');
-let author = document.querySelector('.author');
-let pages = document.querySelector('.page');
-let read = document.querySelector('#read');
-let grid = document.querySelector('.grid');
-
-//Input Form
-let bookTitle = document.getElementById('title');
-let bookAuthor = document.getElementById('author');
-let bookPages = document.getElementById('pages')
-let button = document.querySelector('.add');
-let inputs = document.querySelectorAll('.input')
-
-//Library array
-let theLibrary = [];
-
-//Book prototype
-function Book(title, author, pages) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.info = function() {
-        return `${title} written by ${author}, ${pages} pages`
+//Delegation / Differential Inheritance
+//Factory Function using Object.create()
+const proto = {
+    fart() {
+        return `${this.name} just farted a stinky!`
+    },
+    eat() {
+        return `${this.name} is eating some plums`
+    },
+    sleep() {
+        return `${this.name} is sleeping like a baby`
     }
 }
 
-//Function to add new books to library
-function addToLibrary(){
-    let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value);
-    theLibrary.push(newBook);
-    showInfo();
-    return theLibrary
-}
-button.addEventListener('click', addToLibrary)
+//Concatenative Inheritance / Cloning / Mixins
+//Cloning copies properties without retaining a reference between the two objects
+const origin = {
+    greeting: function greeting() {
+        return `Hey, my name is ${this.name}. Nice to meet you.`
+    }
+};
 
-//Function to add book info to cards
-function showInfo(){
-    let newCard = document.createElement('div');
-for (let i = 0; i < theLibrary.length; i++) {
-    newCard.classList.add('card');
-    newCard.textContent = theLibrary[i].info();
-    grid.append(newCard);
-}}
+const bot = Object.assign({},//New Object
+origin, //Source for cloning properties,
+{name: 'Bot'});
+
+const msg = bot.greeting();
+
+//Functional Inheritance
+//Also uses factory functions and Concatenative Inheritance to add new properties
+//Functions with the purpose of extending existing objects are referred to as Mixins
+
+//Closures
+//Closures give access to an outer function's scope from an inner function (lexical environment)
+
+// const getSecret = (secret) => {
+//     return {
+//         get: () => secret
+//     }
+// }
+
+// test('Closure for object privacy.', assert => {
+//     const msg = '.get() should have access to the closure.';
+//     const expected = 1;
+//     const obj = getSecret(1);
+
+//     const actual = obj.get();
+
+//     try {
+//         assert.ok(secret, 'This throws an error.');
+//     } catch (e) {
+//         assert.ok(true, 'The secret var is only available to privileged methods.');
+//     }
+//     assert.equal(actual, expected, msg)
+//     assert.end();
+// })
+
+//Module Pattern
+//The module pattern wraps a factory function in an IIFE
+const calculator = (() => {
+    const add = (a, b) => a+b;
+    const sub = (a, b) => a-b;
+    const mul = (a, b) => a*b;
+    const div = (a, b) => a/b;
+    return {
+        add,
+        sub,
+        mul,
+        div
+    }
+})();

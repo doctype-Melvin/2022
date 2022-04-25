@@ -1,89 +1,22 @@
-*, *:before, *:after {
+html, body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-html, body {
-    padding: 0;
-    margin: 0;
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .wrapper {
-    display: flex;
-}
-
-.input {
-    width: fit-content;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-input {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-legend {
-    margin-bottom: 15px;
-}
-
-label > input {
-    height: 2em;
-    border: none;
-    border-radius: 25px;
-    background-color: rgba(138, 138, 139, 0.121);
-}
-
-label {
-    margin-bottom: 15px;
-}
-
-.add {
-    border: none;
-    background-color: rgba(195, 213, 187, 0.487);
-    font-size: 1.25em;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 700;
-}
-
-.add:hover{
-    cursor: pointer;
-    background-color: rgba(222, 233, 217, 0.487);
-}
-
-.add:active {
-    background-color: rgba(186, 203, 178, 0.774);
-}
-
-.library {
-    width: 33vw;
-}
-
-.grid {
+    height: 100%;
     display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-    grid-template-columns: repeat(auto-fit, minmax(100px, 30%));
-    border: 1px black solid;
-    gap: 20px;
-    padding: 20px;
-    padding-right: 0;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
-.card {
-    background-color: rgba(133, 184, 116, 0.2);
-    padding: 10px;
-    box-shadow: 1px 1px 3px rgba(46, 46, 46, 0.219);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-
+.content {
+    grid-area: 2 / 2;
+    background-color: #aff293;
+    width: 100%;
 }
