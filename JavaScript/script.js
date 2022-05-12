@@ -69,3 +69,23 @@ const calculator = (() => {
         div
     }
 })();
+
+//Classes
+//Create many objects of the same kind - same as factory functions and constructors
+
+class Product {
+    constructor(name) {
+        this.name = name;
+    }
+
+    category(){ //class method
+    console.log(this.name);
+    }
+}
+let produce = new Product('Apples');
+//produce.category()
+//This call creates a new object(1) and the constructor runs with the given argument and
+//assigns it to this.name(2)
+
+//A class is a kind of function
+console.log(typeof Product) //function
