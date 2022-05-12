@@ -1,60 +1,130 @@
-/*Set up*/
-let choice = ['rock', 'paper', 'scissors'];
+const RPS = [
+    {
+        name: 'rock',
+        icon: '✊',
+        beats: 'scissors'
+    },
+    {
+        name: 'paper',
+        icon: '✋',
+        beats: 'rock'
+    },
+    {
+        name: 'scissors',
+        icon: '🖖',
+        beats: 'paper'
+    }
+]
 
-function cpuPlay() {
-    return choice[Math.floor(Math.random()*choice.length)]
-};
+//Random choice function
+function computerChoice(){
+    return RPS[Math.floor(Math.random()*RPS.length)]
+}
 
-let roundCount = 0;
-let pScore = 0;
-let cScore = 0;
 
-/*Simple player input prompt*/
-function playerPlay(){
-    let input = prompt('Make a choice');
-    switch(input) {
-        case '1':
-            return choice[0]
-        case '2':
-            return choice[1]
-        case '3':
-            return choice[2]
-        default:
-            return choice[Math.floor(Math.random()*choice.length)]
+//Player choice function -- Start game
+const choices = document.querySelectorAll('[data-selection]');
+const startGame = (() => {
+    function clickChoice(input) {
+        let choiceName = input.dataset.selection;
+        let choice = RPS.find(choice => choice.name === choiceName);
+        playRound(choice);
+    }
+    return {
+        clickChoice        
+    }
+})();
+choices.forEach(button => button.addEventListener('click', () => startGame.clickChoice(button), true));
+    
+
+//Play round function
+function playRound(choice) {
+    let roboto = computerChoice();
+    let playerWins = whoWins(choice, roboto);
+    let robotoWins = whoWins(roboto, choice);
+    if(playerWins) {
+        trackScore(player),
+        ply();
+    }else if(robotoWins) {
+        trackScore(cpu),
+        computer();
+    }else 
+    draw();
+    showHands(choice, roboto);
+}
+
+//Winner function
+function whoWins(winner, loser) {
+    return winner.beats === loser.name
+}
+
+//Track points
+const player = document.querySelector('[data-your-score]');
+const cpu = document.querySelector('[data-cpu-score]');
+
+function trackScore(score) {
+    score.innerText = parseInt(score.innerText)+1;
+    gameWinner(score.innerText)
+    return score.innerText
+}
+
+//Declare game winner
+function gameWinner(score) {
+    if(parseInt(score) === 5){
+        choices.forEach(button => button.removeEventListener('click', () => startGame.clickChoice(button), true))
+        console.log('GAME OVER')
     }
 }
 
-/*Play one round*/
-function playRound(ply, cpu) {
-    ply = playerPlay()
-    cpu = cpuPlay();
-    if ((ply === 'rock' && cpu === 'scissors') ||
-        (ply === 'paper' && cpu === 'rock') ||
-        (ply === 'scissors' && cpu === 'paper')) {
-            pScore++
-            return `You won! ${ply} beats ${cpu}`
-        } else if (ply === cpu) {
-            return `It's a draw!`
-        } else {
-            cScore++
-            return `You lost! ${cpu} beats ${ply}`
+//Round messages
+const board = document.querySelector('#messages');
+const current = document.createElement('div');
+current.classList.add('round-winner')
+const pHand = document.createElement('div');
+const cHand = document.createElement('div');
+
+function showHands(player, cpu) {
+    let pIcon = player.icon
+    pHand.innerText = pIcon;
+    let cIcon = cpu.icon
+    cHand.innerText = cIcon ;
+    board.append(pHand, current, cHand);
+    trackHistory(pIcon, cIcon)
+}
+//Helper functions for message board
+function ply() {
+    current.innerText = 'Beats';
+}
+function computer() {
+    current.innerText = 'Beaten by';
+}
+function draw() {
+    current.innerText = 'Draw'
+}
+
+// Add round history
+const history = document.querySelector('#history');
+    //Function adds round numbers
+        let counter = 0;
+        function trackRounds(){
+            counter++;
+            return counter
         }
+
+function trackHistory(player, cpu) {
+    const pHistory = document.createElement('div');
+    const cHistory = document.createElement('div');
+    const roundResult = document.createElement('div');
+            roundResult.setAttribute('id', 'result');
+    const text = document.createElement('div');
+            text.setAttribute('id', 'result-text');
+        
+        pHistory.innerText = player;
+        cHistory.innerText = cpu;
+        text.innerText = `Round ${trackRounds()}`
+            
+        roundResult.append(pHistory, text, cHistory)
+            history.after(roundResult)
 }
 
-/*Function to play a game of 5 rounds*/
-function game(){
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound());
-        roundCount++;
-    }
-    console.log(pScore);
-    console.log(cScore)
-    if (pScore > cScore) {
-        return `You won this match!`
-    } else if (pScore === cScore) {
-        return `It's a tie game!`
-    } else {
-        return `Computer won this match!`
-    }
-}
-console.log(game())
+// Try adding animation for round initiation
