@@ -21,16 +21,21 @@ function computerChoice(){
     return RPS[Math.floor(Math.random()*RPS.length)]
 }
 
+
 //Player choice function -- Start game
 const choices = document.querySelectorAll('[data-selection]');
-(function (){
-    choices.forEach(button => button.addEventListener('click', () => {
-        let choiceName = button.dataset.selection;
+const startGame = (() => {
+    function clickChoice(input) {
+        let choiceName = input.dataset.selection;
         let choice = RPS.find(choice => choice.name === choiceName);
         playRound(choice);
-    }));
+    }
+    return {
+        clickChoice        
+    }
 })();
-
+choices.forEach(button => button.addEventListener('click', () => startGame.clickChoice(button), true));
+    
 
 //Play round function
 function playRound(choice) {
@@ -65,7 +70,10 @@ function trackScore(score) {
 
 //Declare game winner
 function gameWinner(score) {
-    console.log(score)
+    if(parseInt(score) === 5){
+        choices.forEach(button => button.removeEventListener('click', () => startGame.clickChoice(button), true))
+        console.log('GAME OVER')
+    }
 }
 
 //Round messages

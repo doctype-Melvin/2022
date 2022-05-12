@@ -2,6 +2,7 @@ html, body {
     height: 100vh;
     padding: 0;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #wrapper {
@@ -22,6 +23,7 @@ html, body {
     justify-content: center;
     margin: 1.5rem 0;
     border: 2px black solid;
+    border-radius: 10px;
 }
 
 #selection {
@@ -61,18 +63,18 @@ html, body {
     justify-content: space-around;
 }
 .round-winner {
-    font-size: 1.75rem;
+    font-size: 2.2rem;
 }
 
 #result {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 3.5rem;
+    font-size: 4rem;
 }
 
 #result-text {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
 }
 
 .loser {
